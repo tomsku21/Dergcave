@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://wnwc03qg6sq3"]
+
+[ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_txupi"]
+[ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_4ej24"]
+[ext_resource type="Texture2D" uid="uid://dkt83jm8fu65" path="res://images/Buttoning/upgrade base_hover.png" id="3_pkmks"]
+[ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_fp7g3"]
+[ext_resource type="Script" path="res://unique_scripts/upgrades/qualitysoil_up.gd" id="5_g17eo"]
+[ext_resource type="PackedScene" uid="uid://d0kcffgn1y8bx" path="res://objects/upgrades/purchased/qualitysoil_upp.tscn" id="6_43jxf"]
+[ext_resource type="Texture2D" uid="uid://bx45cdy8nnpdj" path="res://images/UpgradeIcon/upgrades/shroom.png" id="7_3oyqq"]
+
+[sub_resource type="Theme" id="Theme_ttucu"]
+default_font_size = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_fkb7g"]
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+outline_size = 6
+
+[node name="qualitysoil_up" type="TextureButton" groups=["Persist"]]
+visible = false
+custom_minimum_size = Vector2(75, 75)
+offset_right = 75.0
+offset_bottom = 75.0
+tooltip_text = "Quality soil
+Cost: 80000 pats
+Lowers tier 1 building cost multiplier by 10%"
+theme = SubResource("Theme_ttucu")
+texture_normal = ExtResource("1_txupi")
+texture_pressed = ExtResource("2_4ej24")
+texture_hover = ExtResource("3_pkmks")
+texture_disabled = ExtResource("4_fp7g3")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_g17eo")
+cost = 80000
+target_node = ExtResource("6_43jxf")
+target_build = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_3oyqq")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 66.0
+text = "2"
+label_settings = SubResource("LabelSettings_fkb7g")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="." method="timeout"]

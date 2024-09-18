@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://clblshkhcubaf"]
+
+[ext_resource type="Texture2D" uid="uid://bq7uy7t4m2bqf" path="res://images/Buttoning/mini_active.png" id="1_1xm4h"]
+[ext_resource type="Texture2D" uid="uid://dsm40ukv54wbf" path="res://images/Buttoning/mini_select.png" id="2_jl8pl"]
+[ext_resource type="Texture2D" uid="uid://b5bignc011sg7" path="res://images/Buttoning/mini_hover.png" id="3_oekwl"]
+[ext_resource type="Texture2D" uid="uid://blahoxt507sic" path="res://images/Buttoning/mini_down.png" id="4_831ej"]
+[ext_resource type="Texture2D" uid="uid://dhsrfcpeaa545" path="res://images/bmenuicons/gear.png" id="5_vmtnq"]
+
+[node name="openset" type="TextureButton"]
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_1xm4h")
+texture_pressed = ExtResource("2_jl8pl")
+texture_hover = ExtResource("3_oekwl")
+texture_disabled = ExtResource("4_831ej")
+
+[node name="I" type="Sprite2D" parent="."]
+position = Vector2(50, 50)
+texture = ExtResource("5_vmtnq")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

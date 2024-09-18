@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcyt37tbqcdka"]
+
+[ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_tbud5"]
+[ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_fjwy0"]
+[ext_resource type="Texture2D" uid="uid://dkt83jm8fu65" path="res://images/Buttoning/upgrade base_hover.png" id="3_65jtu"]
+[ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_2kr0o"]
+[ext_resource type="Script" path="res://unique_scripts/upgrades/Upgrade.gd" id="5_s71st"]
+[ext_resource type="Texture2D" uid="uid://bqaeq5ce72xsd" path="res://images/UpgradeIcon/upgrades/coiner.png" id="6_e5x7h"]
+[ext_resource type="PackedScene" uid="uid://c3c4d5kx25u53" path="res://objects/upgrades/purchased/coin_upp.tscn" id="6_nu545"]
+
+[sub_resource type="Theme" id="Theme_ttucu"]
+default_font_size = 16
+
+[node name="coin_up" type="TextureButton" groups=["Persist"]]
+visible = false
+custom_minimum_size = Vector2(75, 75)
+offset_right = 75.0
+offset_bottom = 75.0
+tooltip_text = "Polished Coins
+Cost: 100 pats
+Increase Coin power by 100%"
+theme = SubResource("Theme_ttucu")
+texture_normal = ExtResource("1_tbud5")
+texture_pressed = ExtResource("2_fjwy0")
+texture_hover = ExtResource("3_65jtu")
+texture_disabled = ExtResource("4_2kr0o")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_s71st")
+cost = 100
+power = 2.0
+build_req = 5
+target_node = ExtResource("6_nu545")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_e5x7h")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="." method="timeout"]

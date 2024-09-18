@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://bafyb0juwxuuu"]
+
+[ext_resource type="Texture2D" uid="uid://qmqqxgdwwjvw" path="res://images/Buttoning/build_base.png" id="1_sxyfs"]
+[ext_resource type="Texture2D" uid="uid://7ct1gd0f0cd1" path="res://images/Buttoning/build_base_selected.png" id="2_y6fs1"]
+[ext_resource type="Texture2D" uid="uid://cyjkjq0ex6jsg" path="res://images/Buttoning/build_base_hover.png" id="3_w5m1b"]
+[ext_resource type="Texture2D" uid="uid://nvg0dymna5ic" path="res://images/Buttoning/build_base_down.png" id="4_6cau6"]
+[ext_resource type="Script" path="res://unique_scripts/goldbuild.gd" id="5_ojq3t"]
+[ext_resource type="Texture2D" uid="uid://c5i00yj4e0nim" path="res://images/UpgradeIcon/buildings/coinbuild.png" id="6_e4ytm"]
+[ext_resource type="Texture2D" uid="uid://c7f1p3aevlu5a" path="res://images/bmenuicons/pat.png" id="7_qapf2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yxlh8"]
+font_size = 54
+
+[sub_resource type="LabelSettings" id="LabelSettings_x8gfd"]
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_jlmkd"]
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_kfath"]
+line_spacing = 0.0
+font_size = 64
+
+[node name="gold_build" type="TextureButton" groups=["Building", "Persist"]]
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_sxyfs")
+texture_pressed = ExtResource("2_y6fs1")
+texture_hover = ExtResource("3_w5m1b")
+texture_disabled = ExtResource("4_6cau6")
+script = ExtResource("5_ojq3t")
+bcost = 10
+bpower = 0.1
+modifier = 1.0
+
+[node name="I" type="Sprite2D" parent="."]
+position = Vector2(160, 96)
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("6_e4ytm")
+
+[node name="C" type="Label" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 112.0
+offset_right = 668.0
+offset_bottom = 186.0
+theme_override_font_sizes/font_size = 18
+label_settings = SubResource("LabelSettings_yxlh8")
+
+[node name="cost" type="Sprite2D" parent="C"]
+position = Vector2(-32, 16)
+texture = ExtResource("7_qapf2")
+
+[node name="A" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 118.0
+offset_right = 1552.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 18
+label_settings = SubResource("LabelSettings_x8gfd")
+horizontal_alignment = 2
+
+[node name="P" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 32.0
+offset_right = 1552.0
+offset_bottom = 90.0
+text = "+0.1 A/s"
+label_settings = SubResource("LabelSettings_jlmkd")
+horizontal_alignment = 2
+
+[node name="Desc" type="Label" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 20.0
+offset_right = 1280.0
+offset_bottom = 108.0
+theme_override_font_sizes/font_size = 14
+text = "Gold Coin"
+label_settings = SubResource("LabelSettings_kfath")
+horizontal_alignment = 1
+
+[node name="Aupdate" type="Timer" parent="."]
+autostart = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="Aupdate" to="." method="_autoupdate"]

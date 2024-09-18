@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://quy7nm7uhb8w"]
+
+[ext_resource type="Texture2D" uid="uid://p4r1riu6148n" path="res://images/field/fieldmush.png" id="1_6wyv4"]
+[ext_resource type="Script" path="res://objects/Field/FieldInteract.gd" id="2_qgt2a"]
+[ext_resource type="PackedScene" uid="uid://f7wykdcvcctr" path="res://objects/Field/fieldeffect.tscn" id="3_aiyau"]
+
+[node name="Fshroom" type="Sprite2D" groups=["Persist"]]
+visible = false
+position = Vector2(1384.81, 1545.62)
+texture = ExtResource("1_6wyv4")
+offset = Vector2(0, 151)
+script = ExtResource("2_qgt2a")
+target_build = 3
+particle = ExtResource("3_aiyau")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="visibility_changed" from="." to="." method="visibility_changed"]
+[connection signal="timeout" from="Timer" to="." method="timeout"]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4sjr32tthrg8"]
+
+[ext_resource type="Script" path="res://unique_scripts/Settings.gd" id="1_pssow"]
+
+[node name="Settings" type="Control" groups=["Menus"]]
+layout_mode = 3
+anchor_right = 0.458
+anchor_bottom = 0.517
+offset_right = -0.488037
+offset_bottom = 1.31198
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pssow")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 704.0
+offset_bottom = 448.0
+color = Color(0.164706, 0.137255, 0.121569, 1)
+
+[node name="Quitb" type="Button" parent="."]
+layout_mode = 0
+offset_top = 416.0
+offset_right = 97.0
+offset_bottom = 447.0
+text = "Quit Game"
+
+[node name="Load" type="Button" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 40.0
+offset_right = 71.0
+offset_bottom = 71.0
+text = "Load"
+
+[node name="Save" type="Button" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 81.0
+offset_right = 69.0
+offset_bottom = 112.0
+text = "Save"
+
+[connection signal="pressed" from="Quitb" to="." method="_on_quitb_pressed"]
+[connection signal="pressed" from="Load" to="." method="load_game"]
+[connection signal="pressed" from="Save" to="." method="save_game"]

@@ -1,0 +1,154 @@
+[gd_scene load_steps=16 format=3 uid="uid://o214psu2i5up"]
+
+[ext_resource type="Script" path="res://unique_scripts/fieldkob.gd" id="1_68ixe"]
+[ext_resource type="Texture2D" uid="uid://bt5lfymokj23e" path="res://images/shado.png" id="2_5sobl"]
+[ext_resource type="Texture2D" uid="uid://1crnexvxijqa" path="res://images/field/kobsheet.png" id="3_53yb4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8v1q2"]
+size = Vector2(50, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8swed"]
+atlas = ExtResource("3_53yb4")
+region = Rect2(0, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wniyd"]
+atlas = ExtResource("3_53yb4")
+region = Rect2(210, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7cmn"]
+atlas = ExtResource("3_53yb4")
+region = Rect2(420, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo5qg"]
+atlas = ExtResource("3_53yb4")
+region = Rect2(0, 260, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk275"]
+atlas = ExtResource("3_53yb4")
+region = Rect2(210, 260, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68m5a"]
+atlas = ExtResource("3_53yb4")
+region = Rect2(0, 520, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6lh2"]
+atlas = ExtResource("3_53yb4")
+region = Rect2(210, 520, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfxb7"]
+atlas = ExtResource("3_53yb4")
+region = Rect2(420, 520, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbobg"]
+atlas = ExtResource("3_53yb4")
+region = Rect2(0, 780, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0sw5"]
+atlas = ExtResource("3_53yb4")
+region = Rect2(210, 780, 200, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ljerv"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_8swed")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_wniyd")
+}],
+"loop": true,
+"name": &"sit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7cmn")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo5qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sk275")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_68m5a")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_n6lh2")
+}],
+"loop": true,
+"name": &"wizsit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfxb7")
+}],
+"loop": true,
+"name": &"wizstand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbobg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0sw5")
+}],
+"loop": true,
+"name": &"wizwalk",
+"speed": 5.0
+}]
+
+[node name="Kob" type="RigidBody2D" groups=["Kobold", "Persist"]]
+y_sort_enabled = true
+gravity_scale = 0.0
+script = ExtResource("1_68ixe")
+boredom = 18
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -26)
+shape = SubResource("RectangleShape2D_8v1q2")
+disabled = true
+
+[node name="TextureRect" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1, -2)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_5sobl")
+offset = Vector2(-2.38419e-07, -2.85714)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -1)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_ljerv")
+animation = &"walk"
+autoplay = "sit"
+offset = Vector2(0, -118.042)
+
+[node name="boredT" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="walkiesT" type="Timer" parent="."]
+
+[node name="wiz" type="Timer" parent="."]
+wait_time = 300.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="boredT" to="." method="_on_boredom_time"]
+[connection signal="timeout" from="walkiesT" to="." method="_on_walkies_time"]
+[connection signal="timeout" from="wiz" to="." method="_wizzedown"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://f75cbh2rlsyg"]
+
+[ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_mqu3l"]
+[ext_resource type="Script" path="res://unique_scripts/upgrades/workinghours_upp.gd" id="2_qr1oi"]
+[ext_resource type="Texture2D" uid="uid://bpbxp3o0v761k" path="res://images/UpgradeIcon/upgrades/WIP.png" id="3_uvg43"]
+
+[node name="hours_upp" type="TextureRect" groups=["Persist"]]
+custom_minimum_size = Vector2(75, 75)
+offset_right = 75.0
+offset_bottom = 75.0
+texture = ExtResource("1_mqu3l")
+expand_mode = 1
+script = ExtResource("2_qr1oi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_uvg43")
+
+[node name="Offwork" type="Timer" parent="."]
+wait_time = 960.0
+one_shot = true
+
+[node name="Onwork" type="Timer" parent="."]
+wait_time = 480.0
+one_shot = true
+
+[connection signal="timeout" from="Offwork" to="." method="_off_work_timer"]
+[connection signal="timeout" from="Onwork" to="." method="_on_work_timer"]

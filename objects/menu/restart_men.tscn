@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6x5twklii704"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xndgw"]
+
+[node name="restart_men" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -334.24
+offset_top = -86.7052
+offset_right = -294.24
+offset_bottom = -46.7052
+
+[node name="basecol" type="TextureRect" parent="."]
+modulate = Color(0.266667, 0.231373, 0.176471, 1)
+show_behind_parent = true
+z_index = -1
+offset_left = 617.24
+offset_top = 101.705
+offset_right = 1480.24
+offset_bottom = 736.705
+texture = SubResource("CanvasTexture_xndgw")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 617.24
+offset_top = 101.705
+offset_right = 1094.24
+offset_bottom = 124.705
+text = "Here we be reincarnating.... once you progress and develop it."

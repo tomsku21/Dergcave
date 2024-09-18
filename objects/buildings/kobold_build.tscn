@@ -1,0 +1,106 @@
+[gd_scene load_steps=13 format=3 uid="uid://blde1q04y11lo"]
+
+[ext_resource type="Texture2D" uid="uid://qmqqxgdwwjvw" path="res://images/Buttoning/build_base.png" id="1_a88fq"]
+[ext_resource type="Texture2D" uid="uid://7ct1gd0f0cd1" path="res://images/Buttoning/build_base_selected.png" id="2_3im3s"]
+[ext_resource type="Texture2D" uid="uid://cyjkjq0ex6jsg" path="res://images/Buttoning/build_base_hover.png" id="3_ipj5s"]
+[ext_resource type="Texture2D" uid="uid://nvg0dymna5ic" path="res://images/Buttoning/build_base_down.png" id="4_dqlr6"]
+[ext_resource type="Script" path="res://unique_scripts/kobold_build.gd" id="5_th51c"]
+[ext_resource type="Texture2D" uid="uid://dq3r7foook0rh" path="res://images/UpgradeIcon/buildings/kobol2.png" id="6_7b1f4"]
+[ext_resource type="PackedScene" uid="uid://6hdxhal6id8r" path="res://objects/debuffs/kobhunger_debuff.tscn" id="6_8wnrg"]
+[ext_resource type="Texture2D" uid="uid://c7f1p3aevlu5a" path="res://images/bmenuicons/pat.png" id="7_tmaxn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x4tqo"]
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_trv6m"]
+line_spacing = 0.0
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_td5mm"]
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_mfrkc"]
+font_size = 54
+
+[node name="Kobold_build" type="TextureButton" groups=["Building", "Persist"]]
+visible = false
+scale = Vector2(0.5, 0.5)
+tooltip_text = "Your hoard has attracted in some kobolds, now you truly feel like a dragon"
+texture_normal = ExtResource("1_a88fq")
+texture_pressed = ExtResource("2_3im3s")
+texture_hover = ExtResource("3_ipj5s")
+texture_disabled = ExtResource("4_dqlr6")
+script = ExtResource("5_th51c")
+bcost = 2000
+bpower = 11.0
+modifier = 1.0
+target_node = ExtResource("6_8wnrg")
+
+[node name="I" type="Sprite2D" parent="."]
+position = Vector2(148, 100)
+scale = Vector2(0.66875, 0.66875)
+texture = ExtResource("6_7b1f4")
+flip_h = true
+
+[node name="A" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 118.0
+offset_right = 1551.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 18
+label_settings = SubResource("LabelSettings_x4tqo")
+horizontal_alignment = 2
+
+[node name="Desc" type="Label" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 16.0
+offset_right = 1280.0
+offset_bottom = 172.0
+text = "Kobold"
+label_settings = SubResource("LabelSettings_trv6m")
+horizontal_alignment = 1
+
+[node name="P" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 32.0
+offset_right = 1552.0
+offset_bottom = 90.0
+text = "+0.1 A/s"
+label_settings = SubResource("LabelSettings_td5mm")
+horizontal_alignment = 2
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Aupdate" type="Timer" parent="."]
+autostart = true
+
+[node name="Mealt" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="C" type="Label" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 112.0
+offset_right = 668.0
+offset_bottom = 186.0
+theme_override_font_sizes/font_size = 18
+label_settings = SubResource("LabelSettings_mfrkc")
+
+[node name="cost" type="Sprite2D" parent="C"]
+position = Vector2(-32, 16)
+texture = ExtResource("7_tmaxn")
+
+[node name="Hungert" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Aupdate" to="." method="_autoupdate"]
+[connection signal="timeout" from="Mealt" to="." method="_on_mealt_timeout"]
+[connection signal="timeout" from="Hungert" to="." method="_on_hunger_timeout"]

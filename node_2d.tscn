@@ -1,0 +1,123 @@
+[gd_scene load_steps=19 format=3 uid="uid://fmcqmf18uoci"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_y43x5"]
+[ext_resource type="Texture2D" uid="uid://cxsbxaanufhrx" path="res://images/field/menuing.png" id="2_chv0r"]
+[ext_resource type="Texture2D" uid="uid://deumtgs7v6dad" path="res://images/field/background.png" id="3_14o3h"]
+[ext_resource type="PackedScene" uid="uid://0u7f06arh5fg" path="res://objects/score_hud.tscn" id="5_x5reb"]
+[ext_resource type="PackedScene" uid="uid://b4sjr32tthrg8" path="res://objects/menu/settings.tscn" id="5_xtddt"]
+[ext_resource type="PackedScene" uid="uid://clblshkhcubaf" path="res://objects/menu/openset.tscn" id="6_5wx62"]
+[ext_resource type="PackedScene" uid="uid://b7u4jqu4hprti" path="res://objects/menu/openmen.tscn" id="7_i5m6r"]
+[ext_resource type="PackedScene" uid="uid://o7mkxllpcg0e" path="res://objects/Field/spawner.tscn" id="9_6ys0m"]
+[ext_resource type="PackedScene" uid="uid://bpaacuahwdfjw" path="res://objects/Field/fgold.tscn" id="9_ltl0a"]
+[ext_resource type="PackedScene" uid="uid://dweldmcbn0nlv" path="res://objects/Field/fbone.tscn" id="9_p5mvr"]
+[ext_resource type="PackedScene" uid="uid://c7xpragx0ytqu" path="res://objects/Field/ftome.tscn" id="9_xhqek"]
+[ext_resource type="PackedScene" uid="uid://cxixv821ykold" path="res://objects/Field/fartifact.tscn" id="10_75stc"]
+[ext_resource type="PackedScene" uid="uid://gpxidtrtmmbw" path="res://objects/menu/buymenu.tscn" id="10_j5kla"]
+[ext_resource type="PackedScene" uid="uid://w7ssnks1d6f1" path="res://objects/Field/fgem.tscn" id="10_rqj0c"]
+[ext_resource type="PackedScene" uid="uid://quy7nm7uhb8w" path="res://objects/Field/fshroom.tscn" id="11_6700q"]
+[ext_resource type="Texture2D" uid="uid://fnmqoovkijs4" path="res://images/field/overhud.png" id="12_03n3c"]
+[ext_resource type="PackedScene" uid="uid://5buc23tbwi8d" path="res://objects/Field/fchest.tscn" id="12_528lm"]
+[ext_resource type="Script" path="res://Saving/Save_Load.gd" id="18_denl0"]
+
+[node name="MainG" type="Node2D"]
+y_sort_enabled = true
+scale = Vector2(1.0026, 1.0034)
+script = ExtResource("1_y43x5")
+
+[node name="PlayPen" type="TextureRect" parent="." groups=["Ground"]]
+z_index = -1
+offset_top = 268.44
+offset_right = 2535.0
+offset_bottom = 1250.44
+scale = Vector2(0.604313, 0.6042)
+texture = ExtResource("2_chv0r")
+metadata/_edit_lock_ = true
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(765.934, 141.325)
+scale = Vector2(0.997407, 0.996612)
+texture = ExtResource("3_14o3h")
+metadata/_edit_lock_ = true
+
+[node name="Field" type="Node2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+
+[node name="Fartifact" parent="Field" instance=ExtResource("10_75stc")]
+
+[node name="Ftome" parent="Field" instance=ExtResource("9_xhqek")]
+
+[node name="Fbone" parent="Field" instance=ExtResource("9_p5mvr")]
+
+[node name="Fgold" parent="Field" instance=ExtResource("9_ltl0a")]
+
+[node name="Fchest" parent="Field" instance=ExtResource("12_528lm")]
+
+[node name="Fgem" parent="Field" instance=ExtResource("10_rqj0c")]
+
+[node name="Fshroom" parent="Field" instance=ExtResource("11_6700q")]
+scale = Vector2(1.25, 1.25)
+
+[node name="spawner" parent="Field" instance=ExtResource("9_6ys0m")]
+y_sort_enabled = true
+position = Vector2(1573.91, 978.673)
+
+[node name="Menus" type="CanvasLayer" parent="."]
+
+[node name="foreground" type="Sprite2D" parent="Menus"]
+z_index = 1
+texture = ExtResource("12_03n3c")
+offset = Vector2(768, 432)
+
+[node name="Debuffs" type="HBoxContainer" parent="Menus/foreground" groups=["Debuff"]]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Buymenu" parent="Menus/foreground" instance=ExtResource("10_j5kla")]
+visible = false
+offset_left = 293.528
+offset_top = 102.702
+offset_right = 1441.53
+offset_bottom = 754.702
+
+[node name="Settings" parent="Menus/foreground" instance=ExtResource("5_xtddt")]
+visible = false
+offset_left = 457.185
+offset_top = 208.707
+offset_right = 456.698
+offset_bottom = 210.019
+
+[node name="Bottomleft_deco" type="Control" parent="Menus/foreground" groups=["Menus"]]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 754.556
+offset_right = 325.0
+offset_bottom = 864.556
+
+[node name="openmen" parent="Menus/foreground" instance=ExtResource("7_i5m6r")]
+offset_left = 53.0
+offset_top = 814.0
+offset_right = 153.0
+offset_bottom = 914.0
+
+[node name="openset" parent="Menus/foreground" instance=ExtResource("6_5wx62")]
+offset_left = 3.0
+offset_top = 814.0
+offset_right = 103.0
+offset_bottom = 914.0
+
+[node name="ScoreHud" parent="Menus/foreground" groups=["Menus"] instance=ExtResource("5_x5reb")]
+offset_left = 1340.44
+offset_top = 772.48
+offset_right = 1732.44
+offset_bottom = 956.48
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="SavenLoad" type="Node" parent="."]
+script = ExtResource("18_denl0")
+
+[connection signal="pressed" from="Menus/foreground/openmen" to="." method="_on_openmen_pressed"]
+[connection signal="pressed" from="Menus/foreground/openset" to="." method="_on_openset_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

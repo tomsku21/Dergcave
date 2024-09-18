@@ -1,0 +1,265 @@
+[gd_scene load_steps=15 format=3 uid="uid://fmcqmf18uoci"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_y43x5"]
+[ext_resource type="PackedScene" uid="uid://ca5x3ydluem2l" path="res://objects/derg.tscn" id="2_7sbox"]
+[ext_resource type="Texture2D" uid="uid://b6rv2y87cll1s" path="res://images/buymen_tilemap.png" id="3_54nwq"]
+[ext_resource type="Texture2D" uid="uid://cuf4vtcg0e5jk" path="res://images/playpen.png" id="3_t1vs0"]
+[ext_resource type="Texture2D" uid="uid://dvg8vr6bq1uuw" path="res://images/heart.png" id="3_x5omm"]
+[ext_resource type="Texture2D" uid="uid://dct8c8vuxwvao" path="res://images/menusides.png" id="5_u1d25"]
+
+[sub_resource type="Gradient" id="Gradient_vrc8a"]
+interpolation_mode = 2
+colors = PackedColorArray(0.703701, 0.723998, 0.858714, 1, 0.651736, 0.733154, 0.672684, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a1nu2"]
+gradient = SubResource("Gradient_vrc8a")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_ajx1l"]
+colors = PackedColorArray(0.300381, 0.41744, 0.302188, 1, 0.306822, 0.286883, 0.11207, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_140dj"]
+gradient = SubResource("Gradient_ajx1l")
+height = 53
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_66cj1"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xnlof"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_af50s"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nex08"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[node name="MainG" type="Node2D"]
+position = Vector2(-3, -2)
+scale = Vector2(1.0026, 1.0034)
+script = ExtResource("1_y43x5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+offset_left = -3.0
+offset_top = -5.0
+offset_right = 1158.0
+offset_bottom = 653.0
+texture = SubResource("GradientTexture2D_a1nu2")
+
+[node name="PlayPen" type="TextureRect" parent="."]
+show_behind_parent = true
+offset_left = 444.0
+offset_right = 1152.0
+offset_bottom = 597.0
+texture = ExtResource("3_t1vs0")
+stretch_mode = 1
+
+[node name="Derg" parent="." instance=ExtResource("2_7sbox")]
+position = Vector2(786.954, 328.882)
+
+[node name="Buymenu" type="TextureRect" parent="."]
+visible = false
+offset_left = 2.99222
+offset_top = -3.98645
+offset_right = 442.992
+offset_bottom = 597.014
+texture = ExtResource("3_54nwq")
+stretch_mode = 1
+
+[node name="PowersP" type="TextureButton" parent="Buymenu"]
+layout_mode = 0
+offset_left = 224.417
+offset_top = 15.9458
+offset_right = 579.417
+offset_bottom = 316.946
+scale = Vector2(0.415338, 0.215219)
+texture_normal = ExtResource("3_x5omm")
+
+[node name="ThingsP" type="TextureButton" parent="Buymenu"]
+layout_mode = 2
+offset_left = 23.9378
+offset_top = 15.9458
+offset_right = 378.938
+offset_bottom = 316.946
+scale = Vector2(0.415338, 0.215219)
+texture_normal = ExtResource("3_x5omm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buymenu"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 0
+offset_left = 66.0
+offset_top = 96.0
+offset_right = 421.0
+offset_bottom = 491.0
+
+[node name="Gold_purchase" type="Button" parent="Buymenu/VBoxContainer"]
+custom_minimum_size = Vector2(350, 55)
+layout_mode = 2
+tooltip_text = "cost: 10 pets"
+focus_mode = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Gold
+
+"
+alignment = 0
+clip_text = true
+
+[node name="Heart" type="Sprite2D" parent="Buymenu/VBoxContainer/Gold_purchase"]
+position = Vector2(-32.096, 27.3562)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_x5omm")
+
+[node name="GoldA" type="Label" parent="Buymenu/VBoxContainer/Gold_purchase"]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 17.0
+offset_right = 330.0
+offset_bottom = 45.0
+horizontal_alignment = 2
+text_direction = 2
+
+[node name="GoldC" type="Label" parent="Buymenu/VBoxContainer/Gold_purchase"]
+layout_mode = 0
+offset_left = 3.81847
+offset_top = 27.5798
+offset_right = 59.8185
+offset_bottom = 51.5798
+text = "10"
+text_direction = 1
+
+[node name="House_purchase" type="Button" parent="Buymenu/VBoxContainer"]
+custom_minimum_size = Vector2(350, 55)
+layout_mode = 2
+focus_mode = 0
+text = "House
+
+"
+alignment = 0
+
+[node name="Heart" type="Sprite2D" parent="Buymenu/VBoxContainer/House_purchase"]
+position = Vector2(-32.096, 27.3562)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_x5omm")
+
+[node name="HouseA" type="Label" parent="Buymenu/VBoxContainer/House_purchase"]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 17.0
+offset_right = 330.0
+offset_bottom = 45.0
+horizontal_alignment = 2
+text_direction = 2
+
+[node name="HouseC" type="Label" parent="Buymenu/VBoxContainer/House_purchase"]
+layout_mode = 0
+offset_left = 3.81847
+offset_top = 27.5798
+offset_right = 59.8185
+offset_bottom = 51.5798
+text = "100"
+
+[node name="Kobold_purchase" type="Button" parent="Buymenu/VBoxContainer"]
+custom_minimum_size = Vector2(350, 55)
+layout_mode = 2
+focus_mode = 0
+text = "Kobold
+
+"
+alignment = 0
+
+[node name="Heart" type="Sprite2D" parent="Buymenu/VBoxContainer/Kobold_purchase"]
+position = Vector2(-32.096, 27.3562)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_x5omm")
+
+[node name="KoboldA" type="Label" parent="Buymenu/VBoxContainer/Kobold_purchase"]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 17.0
+offset_right = 330.0
+offset_bottom = 45.0
+horizontal_alignment = 2
+text_direction = 2
+
+[node name="KoboldC" type="Label" parent="Buymenu/VBoxContainer/Kobold_purchase"]
+layout_mode = 0
+offset_left = 3.81847
+offset_top = 27.5798
+offset_right = 59.8185
+offset_bottom = 51.5798
+text = "2000"
+
+[node name="TextureRect" type="TextureRect" parent="Buymenu"]
+layout_mode = 0
+offset_left = 400.958
+offset_top = 1.99322
+offset_right = 500.958
+offset_bottom = 1573.99
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_u1d25")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="BotMenu" type="TextureRect" parent="."]
+offset_left = 2.0
+offset_top = 597.0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("GradientTexture2D_140dj")
+expand_mode = 1
+
+[node name="BotHud" type="HBoxContainer" parent="BotMenu"]
+layout_direction = 1
+layout_mode = 0
+offset_left = 634.0
+offset_top = 4.0
+offset_right = 1138.0
+offset_bottom = 46.0
+alignment = 2
+
+[node name="PSLabel" type="Label" parent="BotMenu/BotHud"]
+layout_mode = 2
+text = "PPS"
+label_settings = SubResource("LabelSettings_66cj1")
+
+[node name="petSpeed" type="Label" parent="BotMenu/BotHud"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_xnlof")
+horizontal_alignment = 1
+
+[node name="SLabel" type="Label" parent="BotMenu/BotHud"]
+layout_mode = 2
+text = "Pats"
+label_settings = SubResource("LabelSettings_af50s")
+
+[node name="Score" type="Label" parent="BotMenu/BotHud"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "1"
+label_settings = SubResource("LabelSettings_nex08")
+
+[node name="Openmen" type="Button" parent="BotMenu"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 62.0
+offset_bottom = 47.0
+text = "Men"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="pressed" from="Buymenu/VBoxContainer/Gold_purchase" to="." method="_on_gold_purchase_pressed"]
+[connection signal="pressed" from="Buymenu/VBoxContainer/House_purchase" to="." method="_on_house_purchase_pressed"]
+[connection signal="pressed" from="Buymenu/VBoxContainer/Kobold_purchase" to="." method="_on_kobold_purchase_pressed"]
+[connection signal="pressed" from="BotMenu/Openmen" to="." method="_on_openmen_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

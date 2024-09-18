@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://6hdxhal6id8r"]
+
+[ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_pev3s"]
+[ext_resource type="Script" path="res://objects/debuffs/kobhunger_debuff.gd" id="2_7yjy5"]
+[ext_resource type="Texture2D" uid="uid://bqlc7wcws1ka" path="res://images/UpgradeIcon/upgrades/kobup.png" id="3_h1nax"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3g6cb"]
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+outline_size = 6
+
+[node name="kob_upp" type="TextureRect" groups=["Persist"]]
+custom_minimum_size = Vector2(75, 75)
+offset_right = 75.0
+offset_bottom = 75.0
+tooltip_text = "Your kobolds are going hungry from lack of food. Quick purchase some mushrooms, before they suffer any more."
+texture = ExtResource("1_pev3s")
+expand_mode = 1
+script = ExtResource("2_7yjy5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_h1nax")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 66.0
+label_settings = SubResource("LabelSettings_3g6cb")

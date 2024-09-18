@@ -1,0 +1,198 @@
+[gd_scene load_steps=35 format=3 uid="uid://885xoc6ug3ek"]
+
+[ext_resource type="PackedScene" uid="uid://bcyt37tbqcdka" path="res://objects/upgrades/coin_up.tscn" id="1_0gtcv"]
+[ext_resource type="PackedScene" uid="uid://pm1ha8iagsjg" path="res://objects/upgrades/choc_up.tscn" id="2_0u3pm"]
+[ext_resource type="Texture2D" uid="uid://4tvp4h4ssqhd" path="res://images/Buttoning/ownedUps.png" id="3_2u638"]
+[ext_resource type="PackedScene" uid="uid://cvux61yorlw8x" path="res://objects/upgrades/coin_up_3.tscn" id="3_m3m4u"]
+[ext_resource type="PackedScene" uid="uid://ce2ebtxf3riga" path="res://objects/upgrades/coin_up_2.tscn" id="3_tqwqm"]
+[ext_resource type="PackedScene" uid="uid://dvgti0imfjpeu" path="res://objects/upgrades/coin_up_4.tscn" id="4_hu64x"]
+[ext_resource type="PackedScene" uid="uid://bmvxx6elv5dt3" path="res://objects/upgrades/gem_up.tscn" id="6_7l4ne"]
+[ext_resource type="PackedScene" uid="uid://cn1hj1flrk87e" path="res://objects/upgrades/headclick_up.tscn" id="6_i0bhf"]
+[ext_resource type="PackedScene" uid="uid://07yck08wao8o" path="res://objects/upgrades/gem_up_2.tscn" id="7_623kp"]
+[ext_resource type="PackedScene" uid="uid://5cro8lhnwedg" path="res://objects/upgrades/chinclick_up.tscn" id="7_cl84q"]
+[ext_resource type="PackedScene" uid="uid://gp2ie52bq7fr" path="res://objects/upgrades/bellyclick_up.tscn" id="8_34e73"]
+[ext_resource type="PackedScene" uid="uid://83ugbveu8wr7" path="res://objects/upgrades/gem_up_3.tscn" id="8_d31q8"]
+[ext_resource type="PackedScene" uid="uid://clx58v4xoqd7d" path="res://objects/upgrades/kob_up.tscn" id="9_jo6dv"]
+[ext_resource type="PackedScene" uid="uid://bvaokpml3m4ja" path="res://objects/upgrades/kob_up_2.tscn" id="10_n5jiv"]
+[ext_resource type="PackedScene" uid="uid://df0gqkuxjwlex" path="res://objects/upgrades/kob_up_3.tscn" id="11_pk4pr"]
+[ext_resource type="PackedScene" uid="uid://nwedqpj05ild" path="res://objects/upgrades/gbone_up.tscn" id="12_kma5a"]
+[ext_resource type="PackedScene" uid="uid://bmuqf2iac31tk" path="res://objects/upgrades/goldbone_up.tscn" id="13_d8ju8"]
+[ext_resource type="PackedScene" uid="uid://dqr65ujb80cx0" path="res://objects/upgrades/sharpbone_up.tscn" id="14_bm4ip"]
+[ext_resource type="PackedScene" uid="uid://clb3e0bugxy0a" path="res://objects/upgrades/finemeal_up.tscn" id="15_bmfof"]
+[ext_resource type="PackedScene" uid="uid://wnwc03qg6sq3" path="res://objects/upgrades/qualitysoil_up.tscn" id="16_vv0qb"]
+[ext_resource type="PackedScene" uid="uid://bjoto4bhe8gqo" path="res://objects/upgrades/mushdictionary_up.tscn" id="17_07434"]
+[ext_resource type="PackedScene" uid="uid://bgjhhsklm04cr" path="res://objects/upgrades/gemsort_up.tscn" id="18_wr8gf"]
+[ext_resource type="PackedScene" uid="uid://bpx7mtiicy54s" path="res://objects/upgrades/lightbook_up.tscn" id="19_boogh"]
+[ext_resource type="PackedScene" uid="uid://fjr6fsu17wjl" path="res://objects/upgrades/cookbook_up.tscn" id="20_e4tjf"]
+[ext_resource type="PackedScene" uid="uid://ho1q1hdjityb" path="res://objects/upgrades/darkbook_up.tscn" id="21_bfm5q"]
+[ext_resource type="PackedScene" uid="uid://dokuf38caubi2" path="res://objects/upgrades/largechest_up.tscn" id="22_b61jn"]
+[ext_resource type="PackedScene" uid="uid://bqn2dcbsyqjq7" path="res://objects/upgrades/goldenchest_up.tscn" id="23_s25lf"]
+[ext_resource type="PackedScene" uid="uid://14pc4uwdscms" path="res://objects/upgrades/Chestvault_up.tscn" id="24_kk8kc"]
+[ext_resource type="PackedScene" uid="uid://b3wi2u3k62spg" path="res://objects/upgrades/fancyartifact_up.tscn" id="25_mfkfb"]
+[ext_resource type="PackedScene" uid="uid://bjase3xwis1gj" path="res://objects/upgrades/ewartifact_up.tscn" id="26_jmhpy"]
+[ext_resource type="PackedScene" uid="uid://didapnfrc0db5" path="res://objects/upgrades/sacredartifact_up.tscn" id="27_v1g6w"]
+[ext_resource type="PackedScene" uid="uid://bijqsaw00yw55" path="res://objects/upgrades/wizardhat_up.tscn" id="28_5xla8"]
+[ext_resource type="PackedScene" uid="uid://5mf08kplheam" path="res://objects/upgrades/workinghours_up.tscn" id="31_wr3er"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xndgw"]
+
+[node name="Upgrade_men" type="Control"]
+z_index = -1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -334.24
+offset_top = -86.7052
+offset_right = -294.24
+offset_bottom = -46.7052
+
+[node name="basecol" type="TextureRect" parent="."]
+modulate = Color(0.266667, 0.231373, 0.176471, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 617.24
+offset_top = 101.705
+offset_right = 1480.24
+offset_bottom = 736.705
+texture = SubResource("CanvasTexture_xndgw")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(774, 0)
+layout_mode = 2
+offset_left = 630.24
+offset_top = 118.705
+offset_right = 1456.24
+offset_bottom = 471.705
+
+[node name="Upgrade_cont" type="HFlowContainer" parent="ScrollContainer"]
+show_behind_parent = true
+custom_minimum_size = Vector2(774, 0)
+layout_mode = 2
+
+[node name="coin_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("1_0gtcv")]
+layout_mode = 2
+
+[node name="coin_up2" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("3_tqwqm")]
+layout_mode = 2
+
+[node name="coin_up3" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("3_m3m4u")]
+layout_mode = 2
+power = 0.0
+
+[node name="coin_up4" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("4_hu64x")]
+layout_mode = 2
+
+[node name="choc_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("2_0u3pm")]
+layout_mode = 2
+
+[node name="headpats_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("6_i0bhf")]
+layout_mode = 2
+
+[node name="chinscritch_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("7_cl84q")]
+layout_mode = 2
+
+[node name="bellyrub_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("8_34e73")]
+layout_mode = 2
+
+[node name="gem_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("6_7l4ne")]
+layout_mode = 2
+
+[node name="gem_up2" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("7_623kp")]
+layout_mode = 2
+
+[node name="gem_up3" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("8_d31q8")]
+layout_mode = 2
+
+[node name="kob_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("9_jo6dv")]
+layout_mode = 2
+power = 0.0
+
+[node name="kob_up2" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("10_n5jiv")]
+layout_mode = 2
+
+[node name="kob_up3" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("11_pk4pr")]
+layout_mode = 2
+
+[node name="bone_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("12_kma5a")]
+layout_mode = 2
+
+[node name="bone_up2" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("13_d8ju8")]
+layout_mode = 2
+
+[node name="bone_up3" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("14_bm4ip")]
+layout_mode = 2
+
+[node name="finemeal_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("15_bmfof")]
+layout_mode = 2
+
+[node name="qualitysoil_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("16_vv0qb")]
+layout_mode = 2
+
+[node name="dictionary_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("17_07434")]
+layout_mode = 2
+
+[node name="gemsort_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("18_wr8gf")]
+layout_mode = 2
+
+[node name="gnawedbone_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("12_kma5a")]
+layout_mode = 2
+
+[node name="goldbone_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("13_d8ju8")]
+layout_mode = 2
+
+[node name="sharpbone_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("14_bm4ip")]
+layout_mode = 2
+
+[node name="lights_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("19_boogh")]
+layout_mode = 2
+
+[node name="cookbook_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("20_e4tjf")]
+layout_mode = 2
+
+[node name="darkbook_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("21_bfm5q")]
+layout_mode = 2
+
+[node name="largechest_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("22_b61jn")]
+layout_mode = 2
+
+[node name="goldenchest_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("23_s25lf")]
+layout_mode = 2
+
+[node name="vault_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("24_kk8kc")]
+layout_mode = 2
+
+[node name="fancyartifact_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("25_mfkfb")]
+layout_mode = 2
+
+[node name="ewartifact_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("26_jmhpy")]
+layout_mode = 2
+
+[node name="sacredartifact_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("27_v1g6w")]
+layout_mode = 2
+
+[node name="hours_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("31_wr3er")]
+layout_mode = 2
+
+[node name="wizardhat_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("28_5xla8")]
+layout_mode = 2
+
+[node name="purchased_ups" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 617.494
+offset_top = 417.58
+offset_right = 1469.49
+offset_bottom = 735.58
+scale = Vector2(1.01, 1)
+texture = ExtResource("3_2u638")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="purchased_ups"]
+custom_minimum_size = Vector2(774, 0)
+layout_mode = 0
+offset_left = 12.6198
+offset_top = 38.1252
+offset_right = 838.62
+offset_bottom = 342.125
+
+[node name="purchased_cont" type="HFlowContainer" parent="purchased_ups/ScrollContainer" groups=["purchased"]]
+show_behind_parent = true
+custom_minimum_size = Vector2(774, 0)
+layout_mode = 2

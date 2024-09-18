@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqn2dcbsyqjq7"]
+
+[ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_6q1sb"]
+[ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_0r83j"]
+[ext_resource type="Texture2D" uid="uid://dkt83jm8fu65" path="res://images/Buttoning/upgrade base_hover.png" id="3_l3otk"]
+[ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_jye04"]
+[ext_resource type="Script" path="res://unique_scripts/upgrades/goldenchest_up.gd" id="5_gyko2"]
+[ext_resource type="Texture2D" uid="uid://blla6vlbiyjq4" path="res://images/UpgradeIcon/upgrades/chest.png" id="6_ks4qo"]
+[ext_resource type="PackedScene" uid="uid://cluw667b3xu5t" path="res://objects/upgrades/purchased/goldenchest_upp.tscn" id="6_r6psj"]
+
+[sub_resource type="Theme" id="Theme_tesf0"]
+default_font_size = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_sitx0"]
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+outline_size = 6
+
+[node name="goldenchest_up" type="TextureButton" groups=["Persist"]]
+visible = false
+custom_minimum_size = Vector2(75, 75)
+offset_right = 75.0
+offset_bottom = 75.0
+tooltip_text = "Golden chests
+Cost: 3750000 notoriety
+Increase coin power by 500%"
+theme = SubResource("Theme_tesf0")
+texture_normal = ExtResource("1_6q1sb")
+texture_pressed = ExtResource("2_0r83j")
+texture_hover = ExtResource("3_l3otk")
+texture_disabled = ExtResource("4_jye04")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_gyko2")
+cost = 3750000
+build_req = 10
+target_node = ExtResource("6_r6psj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_ks4qo")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 66.0
+text = "2"
+label_settings = SubResource("LabelSettings_sitx0")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="." method="timeout"]

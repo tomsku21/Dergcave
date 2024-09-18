@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://o7mkxllpcg0e"]
+
+[ext_resource type="Script" path="res://unique_scripts/kspawner.gd" id="1_svgr7"]
+[ext_resource type="PackedScene" uid="uid://o214psu2i5up" path="res://objects/Field/fieldkob.tscn" id="2_47rsl"]
+[ext_resource type="PackedScene" uid="uid://ca5x3ydluem2l" path="res://objects/Field/derg.tscn" id="3_308fm"]
+
+[node name="spawner" type="Node2D" groups=["Spawner"]]
+script = ExtResource("1_svgr7")
+target_build = 2
+fieldkob = ExtResource("2_47rsl")
+fieldderg = ExtResource("3_308fm")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

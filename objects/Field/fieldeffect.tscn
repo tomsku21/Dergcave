@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://f7wykdcvcctr"]
+
+[ext_resource type="Texture2D" uid="uid://bnwqc544un7s6" path="res://images/field/poof.png" id="1_3serb"]
+[ext_resource type="Script" path="res://unique_scripts/pattet.gd" id="2_p4a1o"]
+
+[sub_resource type="Curve" id="Curve_paqkn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uqtk6"]
+curve = SubResource("Curve_paqkn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oytxt"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 50.0
+angle_max = 360.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 25.0
+radial_velocity_min = 125.0
+radial_velocity_max = 175.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_uqtk6")
+color = Color(0.741176, 0.686275, 0.568627, 1)
+
+[node name="fieldeffect" type="GPUParticles2D"]
+modulate = Color(0.894118, 0.85098, 0, 0.568627)
+top_level = true
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_oytxt")
+texture = ExtResource("1_3serb")
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("2_p4a1o")

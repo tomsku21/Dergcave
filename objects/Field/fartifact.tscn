@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxixv821ykold"]
+
+[ext_resource type="Texture2D" uid="uid://dn4gb8blrntnn" path="res://images/field/fieldartifact.png" id="1_rliyd"]
+[ext_resource type="Script" path="res://objects/Field/FieldInteract.gd" id="2_wjnse"]
+[ext_resource type="PackedScene" uid="uid://f7wykdcvcctr" path="res://objects/Field/fieldeffect.tscn" id="3_ljn5e"]
+
+[node name="Fartifact" type="Sprite2D" groups=["Persist"]]
+visible = false
+y_sort_enabled = true
+position = Vector2(301.63, 1127.04)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_rliyd")
+offset = Vector2(0.666667, 111.333)
+script = ExtResource("2_wjnse")
+target_build = 7
+particle = ExtResource("3_ljn5e")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="visibility_changed" from="." to="." method="visibility_changed"]
+[connection signal="timeout" from="Timer" to="." method="timeout"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxaa3kptfl2c7"]
+
+[ext_resource type="Texture2D" uid="uid://4tvp4h4ssqhd" path="res://images/Buttoning/ownedUps.png" id="1_pxagr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xndgw"]
+
+[node name="Trophy_men" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -334.24
+offset_top = -86.7052
+offset_right = -294.24
+offset_bottom = -46.7052
+
+[node name="basecol" type="TextureRect" parent="."]
+modulate = Color(0.266667, 0.231373, 0.176471, 1)
+show_behind_parent = true
+z_index = -1
+layout_mode = 0
+offset_left = 617.24
+offset_top = 101.705
+offset_right = 1480.24
+offset_bottom = 736.705
+texture = SubResource("CanvasTexture_xndgw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 2
+offset_left = 617.494
+offset_top = 417.58
+offset_right = 1469.49
+offset_bottom = 735.58
+scale = Vector2(1.01, 1)
+texture = ExtResource("1_pxagr")
+
+[node name="trophies" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(774, 0)
+layout_mode = 2
+offset_left = 659.24
+offset_top = 448.705
+offset_right = 1433.24
+offset_bottom = 801.705
+
+[node name="trophy_cont" type="HFlowContainer" parent="trophies"]
+show_behind_parent = true
+z_index = -1
+custom_minimum_size = Vector2(774, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 635.24
+offset_top = 121.705
+offset_right = 896.24
+offset_bottom = 144.705
+text = "Trophies here. Extremely late add"
