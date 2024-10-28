@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://gpxidtrtmmbw"]
+[gd_scene load_steps=18 format=3 uid="uid://gpxidtrtmmbw"]
 
 [ext_resource type="Texture2D" uid="uid://bb86l8b3ah6ma" path="res://images/Buttoning/menubase.png" id="1_nbtjh"]
 [ext_resource type="Script" path="res://unique_scripts/buymenu.gd" id="2_7hr33"]
@@ -10,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bwamrv3o44nfe" path="res://images/bmenuicons/upgrades.png" id="8_3ujoe"]
 [ext_resource type="Texture2D" uid="uid://dmovcmxjlyj7u" path="res://images/bmenuicons/trophy.png" id="9_yaspk"]
 [ext_resource type="Texture2D" uid="uid://cv6rodf5pranh" path="res://images/bmenuicons/ascend.png" id="10_72jwe"]
-[ext_resource type="Texture2D" uid="uid://dnmpn66tub21r" path="res://images/bmenuicons/outahere.png" id="11_e1hqf"]
-[ext_resource type="Texture2D" uid="uid://xqh6itaxn1sa" path="res://images/bmenuicons/ununlockedasc.png" id="12_xhmvd"]
 [ext_resource type="PackedScene" uid="uid://c4nfj4x3litdg" path="res://objects/menu/build_men.tscn" id="13_l0bpv"]
 [ext_resource type="PackedScene" uid="uid://885xoc6ug3ek" path="res://objects/menu/upgrade_men.tscn" id="14_wstuj"]
 [ext_resource type="PackedScene" uid="uid://cxaa3kptfl2c7" path="res://objects/menu/Trophy_men.tscn" id="15_3ilmi"]
@@ -158,21 +156,6 @@ texture_disabled = ExtResource("5_8yiyc")
 [node name="Sprite2D" type="Sprite2D" parent="restarto"]
 position = Vector2(267.392, 139.526)
 texture = ExtResource("10_72jwe")
-
-[node name="TextureRect" type="TextureRect" parent="restarto"]
-self_modulate = Color(1, 1, 1, 0.909804)
-layout_mode = 0
-offset_left = 14.0
-offset_top = 8.0
-offset_right = 494.0
-offset_bottom = 295.0
-texture = ExtResource("11_e1hqf")
-
-[node name="locked" type="TextureRect" parent="restarto"]
-layout_mode = 0
-offset_right = 515.0
-offset_bottom = 311.0
-texture = ExtResource("12_xhmvd")
 
 [node name="Label" type="Label" parent="restarto"]
 layout_mode = 0

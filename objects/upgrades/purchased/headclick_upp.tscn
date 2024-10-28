@@ -16,6 +16,7 @@ offset_bottom = 75.0
 texture = ExtResource("1_5c2qx")
 expand_mode = 1
 script = ExtResource("2_1hydi")
+bboost = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0

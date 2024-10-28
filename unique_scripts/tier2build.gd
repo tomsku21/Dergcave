@@ -22,9 +22,7 @@ func _ready():
 func _process(_delta):
 	gold = get_tree().get_nodes_in_group("Building")[0]
 	self.disabled = (gold.amount < cost)
-	cost = bcost * (1 + Global.nbmod * cost_multiplier) ** amount
-	get_node("C").text = str(snapped(cost,0.1))
-	get_node("P").text = str("+", snapped(power, 0.1), " N/s")
+
 
 func save():
 	var save_dict = {
@@ -54,13 +52,30 @@ func _update(famount, fmodifier):
 		power = bpower * modifier
 		Global.nsec += amount * power - current_nsec
 		current_nsec = power * amount
-		#update text at the end
+		cost = bcost * (1 + Global.nbmod * cost_multiplier) ** amount
+		#update text fields at end
+		if str(snapped(cost, 1)).length() < 6:
+			get_node("C").text = str(snapped(cost,0.1))
+		else:
+			get_node("C").text = Global.bigprint(cost)
+
+		if str(snapped(power,1)).length() < 6:
+			get_node("P").text = str("+", snapped(power,0.1), "N/s")
+		else:
+			get_node("P").text = str("+", Global.bigprint(power), "N/s")
 		get_node("A").text = str(amount)
 
 func _on_pressed():
-	#if Global.pats >= cost:
-	gold._update(-cost,1)
-	_update(1, 1)
+	#multipurchase if shift held down. while loop it, so you can for example buy 7 if money runs out.
+	if Input.is_action_pressed("multibuy"):
+		var i = 0
+		while i < 10 and gold.amount > cost:
+			gold._update(-cost,1)
+			_update(1, 1)
+			i += 1
+	else:	
+		gold._update(-cost,1)
+		_update(1, 1)
 
 func _on_timer_timeout():
 	if (gold.amount >= cost - 10):

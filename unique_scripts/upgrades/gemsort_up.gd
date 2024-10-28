@@ -2,6 +2,7 @@ extends TextureButton
 
 @export var cost = 0
 @export var target_node: PackedScene
+@export var debuff_node: PackedScene
 var build_req = 40
 var gem_build
 var kobold_build
@@ -33,7 +34,9 @@ func timeout():
 	if (gem_build.amount >= build_req
 	and Global.kobamount >= 3):
 		self.visible = true
-		#debuff activation, activate debuff icon
+		var debuff = debuff_node.instantiate()
+		get_tree().get_nodes_in_group("Debuff")[0].add_child(debuff)
+		Global.gemdebuf = true
 		gem_build.update(0,0.5)
 		kobold_build.update(0,0.5)
 		$Timer.queue_free()
@@ -42,6 +45,7 @@ func timeout():
 func _on_pressed():
 	gem_build.modifier *= (1 +(0.75 *  kobold_build.amount ** 0.75))
 	#remove debuff icon
+	Global.gemdebuf = false
 	gem_build.update(0,2)
 	gem_build.update(0,2)
 	Global.comfort -= cost

@@ -22,8 +22,7 @@ func _on_button_pressed(_name):
 		"Trophies":
 			change_screen($Trophy_men, $Trophies)
 		"restarto":
-			if Global.comfort > 9999999:
-				change_screen($restart_men, $restarto)
+			change_screen($restart_men, $restarto)
 
 func change_screen(new_menu, pbutton):
 	if current_menu:

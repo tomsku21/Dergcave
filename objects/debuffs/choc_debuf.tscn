@@ -14,7 +14,8 @@ custom_minimum_size = Vector2(75, 75)
 offset_right = 75.0
 offset_bottom = 75.0
 tooltip_text = "Your coins were actually chocolate coins, and now they've started melting!
-Act fast or make do without coins for a while..."
+Act fast or make do without coins for a while...
+-1 coin every 5 seconds."
 texture = ExtResource("1_mr4o8")
 expand_mode = 1
 script = ExtResource("2_ir4u6")

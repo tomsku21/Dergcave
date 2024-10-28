@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgjhhsklm04cr"]
+[gd_scene load_steps=11 format=3 uid="uid://bgjhhsklm04cr"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_v7l3b"]
 [ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_eva6i"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_4v66k"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/gemsort_up.gd" id="5_1ip7h"]
 [ext_resource type="PackedScene" uid="uid://byjou0ej56xjj" path="res://objects/upgrades/purchased/gemsort_upp.tscn" id="6_pb6m1"]
+[ext_resource type="PackedScene" uid="uid://chxf6458agcj2" path="res://objects/debuffs/gem_fight.tscn" id="7_ckpjb"]
 [ext_resource type="Texture2D" uid="uid://dglk1v2h1jxtc" path="res://images/UpgradeIcon/upgrades/gemup.png" id="7_o6hop"]
 
 [sub_resource type="Theme" id="Theme_a4apo"]
@@ -34,6 +35,7 @@ stretch_mode = 0
 script = ExtResource("5_1ip7h")
 cost = 150000
 target_node = ExtResource("6_pb6m1")
+debuff_node = ExtResource("7_ckpjb")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0

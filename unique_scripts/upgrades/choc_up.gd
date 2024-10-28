@@ -34,12 +34,12 @@ func timeout():
 		self.visible = true
 		var debuff = debuff_node.instantiate()
 		get_tree().get_nodes_in_group("Debuff")[0].add_child(debuff)
-		Global.chocdebuf = true #fix later
+		Global.chocdebuf = true
 		$Timer.queue_free()
 		$melting.start()
 
 func _on_pressed():
-	Global.chocdebuf = false #fix later
+	Global.chocdebuf = false
 	coin_build._update(0,power)
 	Global.comfort -= cost
 	var purchasedver = target_node.instantiate()

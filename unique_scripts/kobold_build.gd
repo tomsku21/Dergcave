@@ -17,7 +17,10 @@ func _ready():
 	cost = bcost
 	power = bpower * modifier
 	self.visible = ((0.1 + Global.cpsec) >= cost/100)
-	get_node("C").text = str(snapped(cost,0.1))
+	if str(snapped(cost, 1)).length() < 6:
+		get_node("C").text = str(snapped(cost,0.1))
+	else:
+		get_node("C").text = Global.bigprint(cost)
 	connect_build()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,13 +61,29 @@ func _update(famount, fmodifier):
 		Global.cpsec += amount * power - current_cpsec
 		current_cpsec = power * amount
 		cost = bcost * (1+ Global.bmod * cost_multiplier) ** amount
-		get_node("C").text = str(snapped(cost,0.1))
-		get_node("P").text = str("+", snapped(power, 0.1), " C/s")
+		#update text fields at end
+		if str(snapped(cost, 1)).length() < 6:
+			get_node("C").text = str(snapped(cost,0.1))
+		else:
+			get_node("C").text = Global.bigprint(cost)
+
+		if str(snapped(power,1)).length() < 6:
+			get_node("P").text = str("+", snapped(power,0.1), "C/s")
+		else:
+			get_node("P").text = str("+", Global.bigprint(power), "C/s")
 		get_node("A").text = str(amount)
 
 func _on_pressed():
-	Global.comfort -= cost
-	_update(1, 1)
+	#multipurchase if shift held down. while loop it, so you can for example buy 7 if money runs out.
+	if Input.is_action_pressed("multibuy"):
+		var i = 0
+		while i < 10 and Global.comfort > cost:
+			Global.comfort -= cost
+			_update(1, 1)
+			i += 1
+	else:	
+		Global.comfort -= cost
+		_update(1, 1)
 
 func _on_timer_timeout():
 	if ((Global.cpsec) >= cost/100):

@@ -76,7 +76,6 @@ layout_mode = 2
 
 [node name="coin_up3" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("3_m3m4u")]
 layout_mode = 2
-power = 0.0
 
 [node name="coin_up4" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("4_hu64x")]
 layout_mode = 2
@@ -104,7 +103,6 @@ layout_mode = 2
 
 [node name="kob_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("9_jo6dv")]
 layout_mode = 2
-power = 0.0
 
 [node name="kob_up2" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("10_n5jiv")]
 layout_mode = 2
