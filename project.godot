@@ -19,7 +19,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://global.gd"
+Global="*res://unique_scripts/global.gd"
+Popups="*res://Scenes/UI/popups.tscn"
 
 [display]
 

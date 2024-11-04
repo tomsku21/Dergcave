@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://c4nfj4x3litdg"]
+
+[ext_resource type="PackedScene" uid="uid://bafyb0juwxuuu" path="res://Scenes/buildings/coin_build.tscn" id="1_jtq3p"]
+[ext_resource type="PackedScene" uid="uid://bjtdrxm277714" path="res://Scenes/buildings/gem_build.tscn" id="2_i2kn4"]
+[ext_resource type="PackedScene" uid="uid://blde1q04y11lo" path="res://Scenes/buildings/kobold_build.tscn" id="3_cxkai"]
+[ext_resource type="PackedScene" uid="uid://dsu0skjgghjt2" path="res://Scenes/buildings/mushroom_build.tscn" id="4_lmdu7"]
+[ext_resource type="PackedScene" uid="uid://bjpfnihpijk01" path="res://Scenes/buildings/tome_purchase.tscn" id="5_qsifh"]
+[ext_resource type="PackedScene" uid="uid://byiiv46ahju0s" path="res://Scenes/buildings/bone_build.tscn" id="6_iesff"]
+[ext_resource type="PackedScene" uid="uid://c2jh8ihfg6rdt" path="res://Scenes/buildings/chest_build.tscn" id="7_760w7"]
+[ext_resource type="PackedScene" uid="uid://dohsa7vqbdda1" path="res://Scenes/buildings/artifact_build.tscn" id="8_ypsv1"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_oj0qn"]
+
+[node name="Build_men" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 279.0
+offset_top = 13.0
+offset_right = 319.0
+offset_bottom = 53.0
+
+[node name="basecol" type="TextureRect" parent="."]
+modulate = Color(0.266667, 0.231373, 0.176471, 1)
+show_behind_parent = true
+z_index = -1
+layout_mode = 0
+offset_right = 863.0
+offset_bottom = 635.0
+texture = SubResource("CanvasTexture_oj0qn")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+offset_left = 27.0
+offset_top = 13.0
+offset_right = 1659.0
+offset_bottom = 1238.0
+scale = Vector2(0.5, 0.5)
+
+[node name="Build_cont" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="Gold_purchase" parent="ScrollContainer/Build_cont" instance=ExtResource("1_jtq3p")]
+layout_mode = 2
+
+[node name="gem_build" parent="ScrollContainer/Build_cont" instance=ExtResource("2_i2kn4")]
+layout_mode = 2
+
+[node name="Kobold_purchase" parent="ScrollContainer/Build_cont" instance=ExtResource("3_cxkai")]
+layout_mode = 2
+
+[node name="mushroom_build" parent="ScrollContainer/Build_cont" instance=ExtResource("4_lmdu7")]
+layout_mode = 2
+
+[node name="bone_build" parent="ScrollContainer/Build_cont" instance=ExtResource("6_iesff")]
+layout_mode = 2
+
+[node name="tome_purchase" parent="ScrollContainer/Build_cont" instance=ExtResource("5_qsifh")]
+layout_mode = 2
+
+[node name="chest_build" parent="ScrollContainer/Build_cont" instance=ExtResource("7_760w7")]
+layout_mode = 2
+
+[node name="artifact_build" parent="ScrollContainer/Build_cont" instance=ExtResource("8_ypsv1")]
+layout_mode = 2

@@ -1,4 +1,11 @@
-extends TextureButton
+extends TextureRect
+
+@export_category("Information")
+@export var title: String
+@export var description: String
+@export var cost = 0
+@export_range (1,2) var tier: int
+
 var current_increase
 var new_increase
 var arti_build
@@ -31,3 +38,9 @@ func _on_timer_timeout():
 	if current_increase - new_increase != 0:
 		kobold_build.bpower += new_increase - current_increase
 		current_increase = new_increase
+
+func _on_mouse_entered():
+	Popups.UpPopup(Rect2i( Vector2i(global_position) , Vector2i(size)), self)
+	
+func _on_mouse_exited():
+	Popups.HideUpPopup()

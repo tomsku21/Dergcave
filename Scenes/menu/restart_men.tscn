@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3 uid="uid://c6x5twklii704"]
+
+[ext_resource type="Texture2D" uid="uid://ceqnt0xbs5jox" path="res://images/Buttoning/menu_active.png" id="1_m57ep"]
+[ext_resource type="Texture2D" uid="uid://b46vof5h7qr1c" path="res://images/Buttoning/menu_selected.png" id="2_rdwbm"]
+[ext_resource type="Texture2D" uid="uid://bwnlv8w2tko0t" path="res://images/Buttoning/menu_hover.png" id="3_4qiib"]
+[ext_resource type="Texture2D" uid="uid://cypwoxd6msrp1" path="res://images/Buttoning/menudowns.png" id="4_77fws"]
+[ext_resource type="Script" path="res://unique_scripts/reincarnate.gd" id="5_6pu57"]
+[ext_resource type="Texture2D" uid="uid://cv6rodf5pranh" path="res://images/bmenuicons/ascend.png" id="5_eqsak"]
+[ext_resource type="Texture2D" uid="uid://dnmpn66tub21r" path="res://images/bmenuicons/outahere.png" id="6_5uimo"]
+[ext_resource type="Texture2D" uid="uid://xqh6itaxn1sa" path="res://images/bmenuicons/ununlockedasc.png" id="8_u6hnq"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xndgw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eprke"]
+font_size = 28
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="restart_men" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -334.24
+offset_top = -86.7052
+offset_right = -294.24
+offset_bottom = -46.7052
+script = ExtResource("5_6pu57")
+
+[node name="basecol" type="TextureRect" parent="."]
+modulate = Color(0.266667, 0.231373, 0.176471, 1)
+show_behind_parent = true
+z_index = -1
+layout_mode = 0
+offset_left = 617.24
+offset_top = 101.705
+offset_right = 1480.24
+offset_bottom = 736.705
+texture = SubResource("CanvasTexture_xndgw")
+
+[node name="Req" type="Label" parent="."]
+layout_mode = 0
+offset_left = 951.24
+offset_top = 290.705
+offset_right = 1117.24
+offset_bottom = 313.705
+text = "9 limbillion notoriety "
+horizontal_alignment = 1
+
+[node name="restarto" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 862.24
+offset_top = 86.705
+offset_right = 1370.24
+offset_bottom = 396.705
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_m57ep")
+texture_pressed = ExtResource("2_rdwbm")
+texture_hover = ExtResource("3_4qiib")
+texture_disabled = ExtResource("4_77fws")
+
+[node name="Sprite2D" type="Sprite2D" parent="restarto"]
+position = Vector2(164, 138)
+texture = ExtResource("5_eqsak")
+
+[node name="requnmet" type="TextureRect" parent="restarto"]
+self_modulate = Color(1, 1, 1, 0.909804)
+layout_mode = 0
+offset_left = 14.0
+offset_top = 8.0
+offset_right = 494.0
+offset_bottom = 295.0
+texture = ExtResource("6_5uimo")
+
+[node name="chains" type="TextureRect" parent="restarto/requnmet"]
+layout_mode = 0
+offset_left = -2.0
+offset_right = 460.0
+offset_bottom = 254.0
+scale = Vector2(1.04343, 1.13516)
+texture = ExtResource("8_u6hnq")
+
+[node name="Label" type="Label" parent="restarto"]
+layout_mode = 0
+offset_left = 199.411
+offset_top = 249.153
+offset_right = 310.411
+offset_bottom = 288.153
+text = "ascend
+"
+label_settings = SubResource("LabelSettings_eprke")
+horizontal_alignment = 1
+uppercase = true
+
+[connection signal="pressed" from="restarto" to="." method="_on_pressed"]

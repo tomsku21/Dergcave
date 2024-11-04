@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7nutxrtjrc3n"]
+
+[ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_mqcn2"]
+[ext_resource type="Script" path="res://unique_scripts/upgrades/purchasedsave.gd" id="2_4ivej"]
+[ext_resource type="Texture2D" uid="uid://bqlc7wcws1ka" path="res://images/UpgradeIcon/upgrades/kobup.png" id="2_fgclb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3g6cb"]
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+outline_size = 6
+
+[node name="kob_up2p" type="TextureRect" groups=["Persist"]]
+custom_minimum_size = Vector2(75, 75)
+offset_right = 75.0
+offset_bottom = 75.0
+texture = ExtResource("1_mqcn2")
+expand_mode = 1
+script = ExtResource("2_4ivej")
+title = "Plushies"
+description = "Increases Kobold Income by 150%"
+cost = 330000
+tier = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fgclb")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 66.0
+text = "2"
+label_settings = SubResource("LabelSettings_3g6cb")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,23 +1,23 @@
 [gd_scene load_steps=19 format=3 uid="uid://fmcqmf18uoci"]
 
-[ext_resource type="Script" path="res://node_2d.gd" id="1_y43x5"]
+[ext_resource type="Script" path="res://unique_scripts/node_2d.gd" id="1_y43x5"]
 [ext_resource type="Texture2D" uid="uid://cxsbxaanufhrx" path="res://images/field/menuing.png" id="2_chv0r"]
 [ext_resource type="Texture2D" uid="uid://deumtgs7v6dad" path="res://images/field/background.png" id="3_14o3h"]
-[ext_resource type="PackedScene" uid="uid://0u7f06arh5fg" path="res://objects/score_hud.tscn" id="5_x5reb"]
-[ext_resource type="PackedScene" uid="uid://b4sjr32tthrg8" path="res://objects/menu/settings.tscn" id="5_xtddt"]
-[ext_resource type="PackedScene" uid="uid://clblshkhcubaf" path="res://objects/menu/openset.tscn" id="6_5wx62"]
-[ext_resource type="PackedScene" uid="uid://b7u4jqu4hprti" path="res://objects/menu/openmen.tscn" id="7_i5m6r"]
-[ext_resource type="PackedScene" uid="uid://o7mkxllpcg0e" path="res://objects/Field/spawner.tscn" id="9_6ys0m"]
-[ext_resource type="PackedScene" uid="uid://bpaacuahwdfjw" path="res://objects/Field/fgold.tscn" id="9_ltl0a"]
-[ext_resource type="PackedScene" uid="uid://dweldmcbn0nlv" path="res://objects/Field/fbone.tscn" id="9_p5mvr"]
-[ext_resource type="PackedScene" uid="uid://c7xpragx0ytqu" path="res://objects/Field/ftome.tscn" id="9_xhqek"]
-[ext_resource type="PackedScene" uid="uid://cxixv821ykold" path="res://objects/Field/fartifact.tscn" id="10_75stc"]
-[ext_resource type="PackedScene" uid="uid://gpxidtrtmmbw" path="res://objects/menu/buymenu.tscn" id="10_j5kla"]
-[ext_resource type="PackedScene" uid="uid://w7ssnks1d6f1" path="res://objects/Field/fgem.tscn" id="10_rqj0c"]
-[ext_resource type="PackedScene" uid="uid://quy7nm7uhb8w" path="res://objects/Field/fshroom.tscn" id="11_6700q"]
+[ext_resource type="PackedScene" uid="uid://0u7f06arh5fg" path="res://Scenes/UI/score_hud.tscn" id="5_x5reb"]
+[ext_resource type="PackedScene" uid="uid://b4sjr32tthrg8" path="res://Scenes/menu/settings.tscn" id="5_xtddt"]
+[ext_resource type="PackedScene" uid="uid://clblshkhcubaf" path="res://Scenes/menu/openset.tscn" id="6_5wx62"]
+[ext_resource type="PackedScene" uid="uid://b7u4jqu4hprti" path="res://Scenes/menu/openmen.tscn" id="7_i5m6r"]
+[ext_resource type="PackedScene" uid="uid://o7mkxllpcg0e" path="res://Scenes/Field/spawner.tscn" id="9_6ys0m"]
+[ext_resource type="PackedScene" uid="uid://bpaacuahwdfjw" path="res://Scenes/Field/fgold.tscn" id="9_ltl0a"]
+[ext_resource type="PackedScene" uid="uid://dweldmcbn0nlv" path="res://Scenes/Field/fbone.tscn" id="9_p5mvr"]
+[ext_resource type="PackedScene" uid="uid://c7xpragx0ytqu" path="res://Scenes/Field/ftome.tscn" id="9_xhqek"]
+[ext_resource type="PackedScene" uid="uid://cxixv821ykold" path="res://Scenes/Field/fartifact.tscn" id="10_75stc"]
+[ext_resource type="PackedScene" uid="uid://gpxidtrtmmbw" path="res://Scenes/menu/buymenu.tscn" id="10_j5kla"]
+[ext_resource type="PackedScene" uid="uid://w7ssnks1d6f1" path="res://Scenes/Field/fgem.tscn" id="10_rqj0c"]
+[ext_resource type="PackedScene" uid="uid://quy7nm7uhb8w" path="res://Scenes/Field/fshroom.tscn" id="11_6700q"]
 [ext_resource type="Texture2D" uid="uid://fnmqoovkijs4" path="res://images/field/overhud.png" id="12_03n3c"]
-[ext_resource type="PackedScene" uid="uid://5buc23tbwi8d" path="res://objects/Field/fchest.tscn" id="12_528lm"]
-[ext_resource type="Script" path="res://Saving/Save_Load.gd" id="18_denl0"]
+[ext_resource type="PackedScene" uid="uid://5buc23tbwi8d" path="res://Scenes/Field/fchest.tscn" id="12_528lm"]
+[ext_resource type="Script" path="res://unique_scripts/Save_Load.gd" id="18_denl0"]
 
 [node name="MainG" type="Node2D"]
 y_sort_enabled = true
@@ -113,6 +113,7 @@ offset_right = 1732.44
 offset_bottom = 956.48
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
 autostart = true
 
 [node name="SavenLoad" type="Node" parent="."]

@@ -1,26 +1,32 @@
-extends Node
+extends TextureButton
 
-#setting up variables
+@export_category("Information")
+@export var title: String
+@export var description: String
 @export var bcost = 0 #basecost
+@export var cost: float
 @export var amount = 0
 @export var bpower: float #power before modifications. Increases to this should increase income by a ton
+@export var power = 0 #current power
 @export var modifier: float #outside increases should affect this value
+@export_range (1,2) var tier: int
+
+@export_category("Technical")
 @export var target_node: PackedScene
-var current_cpsec = 0 #notoriety per second
-var power = 0 #current power
-var cost
+var income = 0 #Comfort per second
 var cost_multiplier = 1
 var mushrooms
+var costx10: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	cost = bcost
+	cost = bcost * (1 + Global.bmod * cost_multiplier) ** amount
+	costx10 = snapped((bcost * (((1 + Global.bmod) ** (amount + 10)) - (1 + Global.bmod) ** amount)) / (Global.bmod), 0.01)
 	power = bpower * modifier
 	self.visible = ((0.1 + Global.cpsec) >= cost/100)
-	if str(snapped(cost, 1)).length() < 6:
-		get_node("C").text = str(snapped(cost,0.1))
-	else:
-		get_node("C").text = Global.bigprint(cost)
+	get_node("C").text = Global.bigprint(cost)
+	get_node("P").text = str("+", Global.bigprint(power), "C/s")
+	get_node("A").text = str(amount)
 	connect_build()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,7 +46,7 @@ func save():
 		"amount" : amount,
 		"bpower" : bpower,
 		"modifier" : modifier,
-		"current_cpsec" : current_cpsec,
+		"income" : income,
 		"power" : power,
 		"cost" : cost,
 		"cost_multiplier" : cost_multiplier,
@@ -58,19 +64,13 @@ func _update(famount, fmodifier):
 			amount = 0
 		modifier *= fmodifier
 		power = bpower * modifier
-		Global.cpsec += amount * power - current_cpsec
-		current_cpsec = power * amount
-		cost = bcost * (1+ Global.bmod * cost_multiplier) ** amount
+		Global.cpsec += amount * power - income
+		income = power * amount
+		cost = bcost * (1 + Global.bmod * cost_multiplier) ** amount
+		costx10 = snapped((bcost * (((1 + Global.bmod) ** (amount + 10)) - (1 + Global.bmod) ** amount)) / (Global.bmod), 0.01)
 		#update text fields at end
-		if str(snapped(cost, 1)).length() < 6:
-			get_node("C").text = str(snapped(cost,0.1))
-		else:
-			get_node("C").text = Global.bigprint(cost)
-
-		if str(snapped(power,1)).length() < 6:
-			get_node("P").text = str("+", snapped(power,0.1), "C/s")
-		else:
-			get_node("P").text = str("+", Global.bigprint(power), "C/s")
+		get_node("C").text = Global.bigprint(cost)
+		get_node("P").text = str("+", Global.bigprint(power), "C/s")
 		get_node("A").text = str(amount)
 
 func _on_pressed():
@@ -116,3 +116,9 @@ func _on_hunger_timeout():
 
 func _autoupdate():
 	_update(0,1)
+
+func _on_mouse_entered():
+	Popups.BuildPopup(Rect2i( Vector2i(global_position) , Vector2i(size)), self)
+	
+func _on_mouse_exited():
+	Popups.HideBuildPopup()

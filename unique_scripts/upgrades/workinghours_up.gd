@@ -1,9 +1,13 @@
 extends TextureButton
 
+@export_category("Information")
+@export var title: String
+@export var description: String
 @export var cost = 0
+@export_range (1,2) var tier: int
+
+@export_category("Technical")
 @export var target_node: PackedScene
-var build_req = 40
-var gem_build
 var kobold_build
 
 # Called when the node enters the scene tree for the first time.
@@ -24,8 +28,7 @@ func save():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	self.disabled = (Global.comfort < cost)
-	if (gem_build == null 
-	or kobold_build == null):
+	if kobold_build == null:
 		connect_build()
 
 func timeout():
@@ -34,10 +37,15 @@ func timeout():
 		self.visible = true
 		$Timer.queue_free()
 
-
 func _on_pressed():
 	kobold_build.bpower += 25
 	Global.comfort -= cost
 	var purchasedver = target_node.instantiate()
 	get_tree().get_nodes_in_group("purchased")[0].add_child(purchasedver)
 	queue_free()
+
+func _on_mouse_entered():
+	Popups.UpPopup(Rect2i( Vector2i(global_position) , Vector2i(size)), self)
+	
+func _on_mouse_exited():
+	Popups.HideUpPopup()

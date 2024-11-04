@@ -1,4 +1,11 @@
-extends TextureButton
+extends TextureRect
+
+@export_category("Information")
+@export var title: String
+@export var description: String
+@export var cost = 0
+@export_range (1,2) var tier: int
+
 var arti_build
 var new_mult
 var current_mult
@@ -28,3 +35,9 @@ func _timeout():
 	if new_mult - current_mult != 0:
 		Global.mult = (Global.mult*new_mult)/current_mult
 		current_mult = new_mult
+
+func _on_mouse_entered():
+	Popups.UpPopup(Rect2i( Vector2i(global_position) , Vector2i(size)), self)
+	
+func _on_mouse_exited():
+	Popups.HideUpPopup()

@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjoto4bhe8gqo"]
+
+[ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_m1oqa"]
+[ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_4w77m"]
+[ext_resource type="Texture2D" uid="uid://dkt83jm8fu65" path="res://images/Buttoning/upgrade base_hover.png" id="3_wgpmw"]
+[ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_wu1w7"]
+[ext_resource type="Script" path="res://unique_scripts/upgrades/mushdictionary_up.gd" id="5_u22iq"]
+[ext_resource type="PackedScene" uid="uid://e0gwwbvn5db4" path="res://Scenes/upgrades/purchased/mushdictionary_upp.tscn" id="6_vg61m"]
+[ext_resource type="Texture2D" uid="uid://bx45cdy8nnpdj" path="res://images/UpgradeIcon/upgrades/shroom.png" id="7_60l4a"]
+
+[sub_resource type="Theme" id="Theme_ttucu"]
+default_font_size = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_fkb7g"]
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+outline_size = 6
+
+[node name="dictionary_up" type="TextureButton" groups=["Persist"]]
+visible = false
+custom_minimum_size = Vector2(75, 75)
+offset_right = 75.0
+offset_bottom = 75.0
+theme = SubResource("Theme_ttucu")
+texture_normal = ExtResource("1_m1oqa")
+texture_pressed = ExtResource("2_4w77m")
+texture_hover = ExtResource("3_wgpmw")
+texture_disabled = ExtResource("4_wu1w7")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_u22iq")
+title = "Mushroom Catalog"
+description = "Increases tier 1 Income by 25%"
+cost = 500000
+tier = 1
+build_req = 50
+target_node = ExtResource("6_vg61m")
+target_build = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_60l4a")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 66.0
+text = "3"
+label_settings = SubResource("LabelSettings_fkb7g")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="." method="timeout"]

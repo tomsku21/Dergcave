@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://pm1ha8iagsjg"]
+
+[ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_2ae1f"]
+[ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_ahywo"]
+[ext_resource type="Texture2D" uid="uid://dkt83jm8fu65" path="res://images/Buttoning/upgrade base_hover.png" id="3_l1fyh"]
+[ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_5pc4h"]
+[ext_resource type="Script" path="res://unique_scripts/upgrades/choc_up.gd" id="5_105hv"]
+[ext_resource type="Texture2D" uid="uid://bpbxp3o0v761k" path="res://images/UpgradeIcon/upgrades/WIP.png" id="6_t432l"]
+[ext_resource type="PackedScene" uid="uid://lld00tciovk4" path="res://Scenes/upgrades/purchased/choc_upp.tscn" id="6_vp4qq"]
+[ext_resource type="PackedScene" uid="uid://cyeo2cjapg7ci" path="res://Scenes/debuffs/choc_debuf.tscn" id="7_shre3"]
+
+[sub_resource type="Theme" id="Theme_25su2"]
+default_font_size = 16
+
+[node name="choc_up" type="TextureButton" groups=["Persist"]]
+visible = false
+custom_minimum_size = Vector2(75, 75)
+offset_right = 75.0
+offset_bottom = 75.0
+theme = SubResource("Theme_25su2")
+texture_normal = ExtResource("1_2ae1f")
+texture_pressed = ExtResource("2_ahywo")
+texture_hover = ExtResource("3_l1fyh")
+texture_disabled = ExtResource("4_5pc4h")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_105hv")
+title = "Chocolate Coins"
+description = "Increases Coin Income by 250% by trading all of your chocolate coins for real ones"
+cost = 3000
+power = 3.5
+tier = 1
+build_req = 25
+target_node = ExtResource("6_vp4qq")
+debuff_node = ExtResource("7_shre3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_t432l")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="melting" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="." method="timeout"]
+[connection signal="timeout" from="melting" to="." method="_on_melting_timeout"]

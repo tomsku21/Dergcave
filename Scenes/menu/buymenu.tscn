@@ -1,0 +1,181 @@
+[gd_scene load_steps=18 format=3 uid="uid://gpxidtrtmmbw"]
+
+[ext_resource type="Texture2D" uid="uid://bb86l8b3ah6ma" path="res://images/Buttoning/menubase.png" id="1_nbtjh"]
+[ext_resource type="Script" path="res://unique_scripts/buymenu.gd" id="2_7hr33"]
+[ext_resource type="Texture2D" uid="uid://ceqnt0xbs5jox" path="res://images/Buttoning/menu_active.png" id="2_224gl"]
+[ext_resource type="Texture2D" uid="uid://b46vof5h7qr1c" path="res://images/Buttoning/menu_selected.png" id="3_hmsbu"]
+[ext_resource type="Texture2D" uid="uid://bwnlv8w2tko0t" path="res://images/Buttoning/menu_hover.png" id="4_86v46"]
+[ext_resource type="Texture2D" uid="uid://cypwoxd6msrp1" path="res://images/Buttoning/menudowns.png" id="5_8yiyc"]
+[ext_resource type="Texture2D" uid="uid://c67c4015no388" path="res://images/bmenuicons/hoard_up.png" id="7_5dwap"]
+[ext_resource type="Texture2D" uid="uid://bwamrv3o44nfe" path="res://images/bmenuicons/upgrades.png" id="8_3ujoe"]
+[ext_resource type="Texture2D" uid="uid://dmovcmxjlyj7u" path="res://images/bmenuicons/trophy.png" id="9_yaspk"]
+[ext_resource type="Texture2D" uid="uid://cv6rodf5pranh" path="res://images/bmenuicons/ascend.png" id="10_72jwe"]
+[ext_resource type="PackedScene" uid="uid://c4nfj4x3litdg" path="res://Scenes/menu/build_men.tscn" id="13_l0bpv"]
+[ext_resource type="PackedScene" uid="uid://885xoc6ug3ek" path="res://Scenes/menu/upgrade_men.tscn" id="14_wstuj"]
+[ext_resource type="PackedScene" uid="uid://cxaa3kptfl2c7" path="res://Scenes/menu/Trophy_men.tscn" id="15_3ilmi"]
+[ext_resource type="PackedScene" uid="uid://c6x5twklii704" path="res://Scenes/menu/restart_men.tscn" id="16_vlg0l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xwupj"]
+font_size = 28
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3xt1d"]
+font_size = 28
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r2a5q"]
+font_size = 28
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Buymenu" type="TextureRect" groups=["Menus"]]
+z_index = 2
+offset_left = 295.0
+offset_top = 104.0
+offset_right = 1443.0
+offset_bottom = 756.0
+scale = Vector2(0.880311, 1)
+texture = ExtResource("1_nbtjh")
+expand_mode = 1
+script = ExtResource("2_7hr33")
+
+[node name="Hoardm" type="TextureButton" parent="." groups=["sub_menu"]]
+z_index = -1
+layout_mode = 0
+offset_left = 14.0
+offset_top = 16.0
+offset_right = 522.0
+offset_bottom = 326.0
+scale = Vector2(0.5, 0.5)
+disabled = true
+texture_normal = ExtResource("2_224gl")
+texture_pressed = ExtResource("3_hmsbu")
+texture_hover = ExtResource("4_86v46")
+texture_disabled = ExtResource("5_8yiyc")
+
+[node name="TextureRect" type="TextureRect" parent="Hoardm"]
+layout_mode = 0
+offset_left = 20.1147
+offset_top = 9.15289
+offset_right = 482.115
+offset_bottom = 263.153
+texture = ExtResource("7_5dwap")
+
+[node name="Label" type="Label" parent="Hoardm"]
+layout_mode = 0
+offset_left = 199.131
+offset_top = 242.36
+offset_right = 300.131
+offset_bottom = 281.36
+text = "Hoard"
+label_settings = SubResource("LabelSettings_xwupj")
+uppercase = true
+
+[node name="Upgrades" type="TextureButton" parent="." groups=["sub_menu"]]
+z_index = -1
+layout_mode = 0
+offset_left = 13.8602
+offset_top = 173.058
+offset_right = 267.86
+offset_bottom = 328.058
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_224gl")
+texture_pressed = ExtResource("3_hmsbu")
+texture_hover = ExtResource("4_86v46")
+texture_disabled = ExtResource("5_8yiyc")
+
+[node name="TextureRect" type="TextureRect" parent="Upgrades"]
+layout_mode = 0
+offset_left = 12.4632
+offset_top = 8.96914
+offset_right = 243.463
+offset_bottom = 135.969
+texture = ExtResource("8_3ujoe")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Upgrades"]
+layout_mode = 0
+offset_left = 165.42
+offset_top = 241.18
+offset_right = 312.42
+offset_bottom = 280.18
+text = "Upgrades
+"
+label_settings = SubResource("LabelSettings_xwupj")
+uppercase = true
+
+[node name="Trophies" type="TextureButton" parent="." groups=["sub_menu"]]
+z_index = -1
+layout_mode = 0
+offset_left = 13.6315
+offset_top = 329.0
+offset_right = 521.632
+offset_bottom = 639.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_224gl")
+texture_pressed = ExtResource("3_hmsbu")
+texture_hover = ExtResource("4_86v46")
+texture_disabled = ExtResource("5_8yiyc")
+
+[node name="TextureRect" type="TextureRect" parent="Trophies"]
+layout_mode = 0
+offset_left = 13.5962
+offset_top = 9.96575
+offset_right = 244.596
+offset_bottom = 136.966
+texture = ExtResource("9_yaspk")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Trophies"]
+layout_mode = 0
+offset_left = 199.411
+offset_top = 253.139
+offset_right = 276.411
+offset_bottom = 276.139
+text = "Trophies
+"
+label_settings = SubResource("LabelSettings_3xt1d")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="restarto" type="TextureButton" parent="." groups=["sub_menu"]]
+z_index = -1
+layout_mode = 0
+offset_left = 13.8602
+offset_top = 484.997
+offset_right = 267.86
+offset_bottom = 639.997
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_224gl")
+texture_pressed = ExtResource("3_hmsbu")
+texture_hover = ExtResource("4_86v46")
+texture_disabled = ExtResource("5_8yiyc")
+
+[node name="Sprite2D" type="Sprite2D" parent="restarto"]
+position = Vector2(267.392, 139.526)
+texture = ExtResource("10_72jwe")
+
+[node name="Label" type="Label" parent="restarto"]
+layout_mode = 0
+offset_left = 199.411
+offset_top = 249.153
+offset_right = 310.411
+offset_bottom = 288.153
+text = "ascend
+"
+label_settings = SubResource("LabelSettings_r2a5q")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Build_men" parent="." instance=ExtResource("13_l0bpv")]
+
+[node name="Upgrade_men" parent="." instance=ExtResource("14_wstuj")]
+visible = false
+
+[node name="Trophy_men" parent="." instance=ExtResource("15_3ilmi")]
+visible = false
+
+[node name="restart_men" parent="." instance=ExtResource("16_vlg0l")]
+visible = false

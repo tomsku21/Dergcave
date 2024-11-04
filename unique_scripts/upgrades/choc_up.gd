@@ -1,7 +1,13 @@
 extends TextureButton
 
+@export_category("Information")
+@export var title: String
+@export var description: String
 @export var cost = 0
 @export var power: float
+@export_range (1,2) var tier: int
+
+@export_category("Technical")
 @export var build_req = 0
 @export var target_node: PackedScene
 @export var debuff_node: PackedScene
@@ -49,3 +55,9 @@ func _on_pressed():
 
 func _on_melting_timeout():
 	coin_build._update(-1,1)
+
+func _on_mouse_entered():
+	Popups.UpPopup(Rect2i( Vector2i(global_position) , Vector2i(size)), self)
+	
+func _on_mouse_exited():
+	Popups.HideUpPopup()

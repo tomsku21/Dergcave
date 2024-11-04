@@ -1,7 +1,13 @@
 extends TextureButton
 
+@export_category("Information")
+@export var title: String
+@export var description: String
 @export var cost = 0
 @export var power: float
+@export_range (1,2) var tier: int
+
+@export_category("Technical")
 @export var build_req = 0
 @export var target_node: PackedScene
 @export_range (0,7) var target_build = 0
@@ -40,3 +46,9 @@ func _on_pressed():
 	var purchasedver = target_node.instantiate()
 	get_tree().get_nodes_in_group("purchased")[0].add_child(purchasedver)
 	queue_free()
+
+func _on_mouse_entered():
+	Popups.UpPopup(Rect2i( Vector2i(global_position) , Vector2i(size)), self)
+	
+func _on_mouse_exited():
+	Popups.HideUpPopup()

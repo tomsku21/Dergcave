@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://co4mewvby1fw7"]
+
+[ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_6sanl"]
+[ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_nipfu"]
+[ext_resource type="Texture2D" uid="uid://dkt83jm8fu65" path="res://images/Buttoning/upgrade base_hover.png" id="3_s8drp"]
+[ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_eqttp"]
+[ext_resource type="Script" path="res://unique_scripts/upgrades/Upgrade.gd" id="5_qplj8"]
+[ext_resource type="PackedScene" uid="uid://c3bh2hnmdg5y0" path="res://Scenes/upgrades/purchased/gem_up_4p.tscn" id="6_fgtb6"]
+[ext_resource type="Texture2D" uid="uid://dglk1v2h1jxtc" path="res://images/UpgradeIcon/upgrades/gemup.png" id="7_tomc8"]
+
+[sub_resource type="Theme" id="Theme_a4apo"]
+default_font_size = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_qsqex"]
+font_size = 42
+font_color = Color(0, 0, 0, 1)
+outline_size = 6
+
+[node name="gem_up4" type="TextureButton"]
+visible = false
+custom_minimum_size = Vector2(75, 75)
+offset_right = 75.0
+offset_bottom = 75.0
+theme = SubResource("Theme_a4apo")
+texture_normal = ExtResource("1_6sanl")
+texture_pressed = ExtResource("2_nipfu")
+texture_hover = ExtResource("3_s8drp")
+texture_disabled = ExtResource("4_eqttp")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("5_qplj8")
+title = "Gem Revolution"
+description = "Increases Gem Income by 200%"
+cost = 8000000
+power = 3.0
+tier = 1
+build_req = 100
+target_node = ExtResource("6_fgtb6")
+target_build = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_tomc8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 66.0
+text = "4"
+label_settings = SubResource("LabelSettings_qsqex")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="." method="timeout"]
