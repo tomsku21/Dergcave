@@ -1,4 +1,4 @@
-# Dergcave
+# Dergon Hoard
 WIP clicker game made in Godot
 
 You pet the dragon as he roams around his cave, using the affection gained to get gold, gems, mushrooms etc. to grow the hoard.
