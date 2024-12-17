@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgjhhsklm04cr"]
+[gd_scene load_steps=10 format=3 uid="uid://bgjhhsklm04cr"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_v7l3b"]
 [ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_eva6i"]
@@ -7,15 +7,10 @@
 [ext_resource type="Script" path="res://unique_scripts/upgrades/gemsort_up.gd" id="5_1ip7h"]
 [ext_resource type="PackedScene" uid="uid://byjou0ej56xjj" path="res://Scenes/upgrades/purchased/gemsort_upp.tscn" id="6_pb6m1"]
 [ext_resource type="PackedScene" uid="uid://chxf6458agcj2" path="res://Scenes/debuffs/gem_fight.tscn" id="7_ckpjb"]
-[ext_resource type="Texture2D" uid="uid://dglk1v2h1jxtc" path="res://images/UpgradeIcon/upgrades/gemup.png" id="7_o6hop"]
+[ext_resource type="Texture2D" uid="uid://bccgwdjhc4ay" path="res://images/UpgradeIcon/upgrades/gemsort.png" id="8_jltxq"]
 
 [sub_resource type="Theme" id="Theme_a4apo"]
 default_font_size = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_qsqex"]
-font_size = 42
-font_color = Color(0, 0, 0, 1)
-outline_size = 6
 
 [node name="gemsort_up" type="TextureButton" groups=["Persist"]]
 visible = false
@@ -31,7 +26,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("5_1ip7h")
 title = "Gem Sorting"
-description = "Increases Kobold Income based on the amount of Gems"
+description = "Increases Kobold Income based on the amount of Gems owned"
 cost = 150000
 tier = 1
 build_req = 40
@@ -43,16 +38,7 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_o6hop")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "S"
-label_settings = SubResource("LabelSettings_qsqex")
+texture = ExtResource("8_jltxq")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

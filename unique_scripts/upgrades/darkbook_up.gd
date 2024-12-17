@@ -9,6 +9,7 @@ extends TextureButton
 @export_category("Technical")
 @export var build_req = 0
 @export var target_node: PackedScene
+var soundnode = preload("res://Scenes/upsound.tscn")
 var tome_build
 var bone_build
 
@@ -42,10 +43,12 @@ func timeout():
 
 
 func _on_pressed():
-	Global.mult *= (1+ (0.5 * bone_build ** 0.5))
+	Global.mult *= (1+ (0.5 * bone_build.amount ** 0.5))
 	Global.notoriety -= cost
 	var purchasedver = target_node.instantiate()
 	get_tree().get_nodes_in_group("purchased")[0].add_child(purchasedver)
+	var soundeffect = soundnode.instantiate()
+	get_parent().add_child(soundeffect)
 	queue_free()
 
 func _on_mouse_entered():

@@ -1,16 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cluw667b3xu5t"]
+[gd_scene load_steps=5 format=3 uid="uid://cluw667b3xu5t"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_alms6"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/purchasedsave.gd" id="2_u0008"]
-[ext_resource type="Texture2D" uid="uid://blla6vlbiyjq4" path="res://images/UpgradeIcon/upgrades/chest.png" id="5_qcifb"]
+[ext_resource type="Texture2D" uid="uid://cv2uassyy08ip" path="res://images/UpgradeIcon/upgrades/goldchest.png" id="3_24xv4"]
 
 [sub_resource type="Theme" id="Theme_tesf0"]
 default_font_size = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_dsjav"]
-font_size = 42
-font_color = Color(0, 0, 0, 1)
-outline_size = 6
 
 [node name="goldenchest_upp" type="TextureRect" groups=["Persist"]]
 custom_minimum_size = Vector2(75, 75)
@@ -30,16 +25,7 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_qcifb")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "2"
-label_settings = SubResource("LabelSettings_dsjav")
+texture = ExtResource("3_24xv4")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

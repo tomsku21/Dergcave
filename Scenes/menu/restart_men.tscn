@@ -69,6 +69,7 @@ position = Vector2(164, 138)
 texture = ExtResource("5_eqsak")
 
 [node name="requnmet" type="TextureRect" parent="restarto"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0.909804)
 layout_mode = 0
 offset_left = 14.0

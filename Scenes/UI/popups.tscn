@@ -21,6 +21,7 @@ unique_name_in_owner = true
 visible = false
 offset_right = 222.0
 offset_bottom = 130.0
+pivot_offset = Vector2(111, 0)
 theme_override_styles/panel = ExtResource("2_56iah")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/ToolPopup"]
@@ -30,19 +31,23 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Chocolate Coins"
+text = "Name"
+horizontal_alignment = 1
 
 [node name="Cost" type="Label" parent="UI/ToolPopup/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 14
 text = "Cost"
 
-[node name="Desc" type="Label" parent="UI/ToolPopup/VBoxContainer"]
+[node name="Desc" type="RichTextLabel" parent="UI/ToolPopup/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 1)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Effect"
+theme_override_colors/default_color = Color(0.870588, 0.870588, 0.870588, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "Increases income based on the amount of bones owned"
+fit_content = true
 
 [node name="BuildPopup" type="PanelContainer" parent="UI"]
 unique_name_in_owner = true
@@ -58,26 +63,143 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
-text = "Chocolate Coins"
+text = "Name"
+horizontal_alignment = 1
 
 [node name="Cost1" type="Label" parent="UI/BuildPopup/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 14
 text = "Cost"
 
 [node name="Cost10" type="Label" parent="UI/BuildPopup/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 14
+text = "Cost for 10"
 
 [node name="Income" type="Label" parent="UI/BuildPopup/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 14
+text = "Income"
 
 [node name="Descr" type="Label" parent="UI/BuildPopup/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 14
 text = "Effect"
+
+[node name="DebuffPopup" type="PanelContainer" parent="UI"]
+unique_name_in_owner = true
+visible = false
+offset_right = 222.0
+offset_bottom = 130.0
+theme_override_styles/panel = ExtResource("2_56iah")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DebuffPopup"]
+layout_mode = 2
+
+[node name="Debuf" type="Label" parent="UI/DebuffPopup/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Melting coins"
+horizontal_alignment = 1
+
+[node name="Descri" type="RichTextLabel" parent="UI/DebuffPopup/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(226, 10)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.870588, 0.870588, 0.870588, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "Your coins were actually made of chocolate and have started melting"
+fit_content = true
+
+[node name="Effect" type="Label" parent="UI/DebuffPopup/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "-1 coin every 5 seconds"
+
+[node name="AscendPopup" type="PanelContainer" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -76.0
+offset_right = 190.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_56iah")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/AscendPopup"]
+layout_mode = 2
+
+[node name="Ascend" type="Label" parent="UI/AscendPopup/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Ascend"
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="UI/AscendPopup/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(405, 88)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.870588, 0.870588, 0.870588, 1)
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[p]Ascending will reset all of your buildings and upgrades, but not your memories.[/p] [p]You will start building a new hoard for a new dragon, with some bonuses to help you get farther faster.[/p]"
+fit_content = true
+scroll_active = false
+
+[node name="Requirement" type="Label" parent="UI/AscendPopup/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "You need X notoriety to Ascend."
+
+[node name="Ascensionlvl" type="Label" parent="UI/AscendPopup/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Your Ascension level will increase to x"
+
+[node name="SavePopup" type="PanelContainer" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -57.0
+offset_right = 45.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("2_56iah")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/SavePopup"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Save" type="Label" parent="UI/SavePopup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "Saved"
+horizontal_alignment = 1
+
+[node name="SaveTime" type="Timer" parent="UI/SavePopup"]
+unique_name_in_owner = true
+wait_time = 1.5
+
+[connection signal="timeout" from="UI/SavePopup/SaveTime" to="." method="HideSavePopup"]

@@ -1,16 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://nbtwv14kxwq8"]
+[gd_scene load_steps=5 format=3 uid="uid://nbtwv14kxwq8"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_4b6kj"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/ewartifact_upp.gd" id="2_e343q"]
-[ext_resource type="Texture2D" uid="uid://2se8xcfiuhbw" path="res://images/UpgradeIcon/upgrades/art.png" id="5_ha2a1"]
+[ext_resource type="Texture2D" uid="uid://blo6piwrcsmxt" path="res://images/UpgradeIcon/upgrades/enchantedwep.png" id="3_m72j7"]
 
 [sub_resource type="Theme" id="Theme_tesf0"]
 default_font_size = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_i1t18"]
-font_size = 42
-font_color = Color(0, 0, 0, 1)
-outline_size = 6
 
 [node name="ewartifact_upp" type="TextureRect" groups=["Persist"]]
 custom_minimum_size = Vector2(75, 75)
@@ -21,7 +16,7 @@ texture = ExtResource("1_4b6kj")
 expand_mode = 1
 script = ExtResource("2_e343q")
 title = "Enchanted Weapons"
-description = "Increases Kobold's Income based on the amount of owned Artifacts"
+description = "Increases Kobold's Income based on the amount of Artifacts owned"
 cost = 50000000
 tier = 2
 
@@ -30,16 +25,7 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_ha2a1")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "2"
-label_settings = SubResource("LabelSettings_i1t18")
+texture = ExtResource("3_m72j7")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

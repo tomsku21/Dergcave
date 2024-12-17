@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_uv07i"]
 [ext_resource type="Script" path="res://Scenes/debuffs/gem_fight.gd" id="2_fyj0c"]
-[ext_resource type="Texture2D" uid="uid://dglk1v2h1jxtc" path="res://images/UpgradeIcon/upgrades/gemup.png" id="3_y8r7u"]
+[ext_resource type="Texture2D" uid="uid://degriuk6kjei" path="res://images/UpgradeIcon/upgrades/gemsortdebuff.png" id="3_ti5c5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3g6cb"]
 font_size = 42
@@ -13,18 +13,19 @@ outline_size = 6
 custom_minimum_size = Vector2(75, 75)
 offset_right = 75.0
 offset_bottom = 75.0
-tooltip_text = "The kobolds are fighting over the proper sorting of gems. Productivity will be low until this gets sorted.
--50% kobold and gem productivity"
 texture = ExtResource("1_uv07i")
 expand_mode = 1
 script = ExtResource("2_fyj0c")
+title = "Gem fight"
+description = "The kobolds are fighting over the proper sorting of gems."
+effect = "-50% kobold and gem income"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_y8r7u")
+texture = ExtResource("3_ti5c5")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -33,3 +34,6 @@ offset_top = 8.0
 offset_right = 48.0
 offset_bottom = 66.0
 label_settings = SubResource("LabelSettings_3g6cb")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

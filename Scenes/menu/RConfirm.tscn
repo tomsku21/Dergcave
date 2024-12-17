@@ -1,0 +1,175 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmicio0q6re0l"]
+
+[ext_resource type="Script" path="res://Scenes/menu/Rconfirm.gd" id="1_c6m1m"]
+[ext_resource type="Texture2D" uid="uid://cwqv5p8gaiupg" path="res://images/Buttoning/X_active.png" id="2_fcjsf"]
+[ext_resource type="Texture2D" uid="uid://m3s2atvoqmjd" path="res://images/Buttoning/Genbutton_base.png" id="2_i4gys"]
+[ext_resource type="Texture2D" uid="uid://cg7n7yycd7b2v" path="res://images/Buttoning/Genbutton_select.png" id="3_b0xs6"]
+[ext_resource type="Texture2D" uid="uid://dfh1f3u42e68q" path="res://images/Buttoning/X_hover.png" id="3_pxky0"]
+[ext_resource type="Texture2D" uid="uid://bk7501bctsbri" path="res://images/Buttoning/Genbutton_hover.png" id="4_p4kw8"]
+[ext_resource type="Texture2D" uid="uid://cjwnv441k8nks" path="res://images/Buttoning/Genbutton_down.png" id="5_x782r"]
+[ext_resource type="AudioStream" uid="uid://cedcmjmiii7px" path="res://Audio/MenuTap.ogg" id="8_6ji7r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnl1m"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_right = 15.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0784314, 0.0745098, 0.0705882, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.25098, 0.105882, 0, 1)
+border_blend = true
+shadow_size = 1
+
+[node name="RConfirm" type="Control"]
+top_level = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_c6m1m")
+
+[node name="ConfirmWind" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 2
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="ConfirmWind"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.0431373, 0.0392157, 0.223529)
+
+[node name="Panel" type="PanelContainer" parent="ConfirmWind"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -102.0
+offset_right = 212.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qnl1m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmWind/Panel"]
+layout_mode = 2
+
+[node name="Ascend" type="Label" parent="ConfirmWind/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "Ascend"
+horizontal_alignment = 1
+
+[node name="Label" type="RichTextLabel" parent="ConfirmWind/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.870588, 0.870588, 0.870588, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[p]Ascending will cause you to lose your progress and start again.[/p]
+[p]You might be able to reach the next tier of ascension faster by continuing your current run.[/p]
+[p]By Ascending now:[/p]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+shortcut_keys_enabled = false
+
+[node name="Effect1" type="Label" parent="ConfirmWind/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Your Gold coin cost multiplier will lower by x%"
+
+[node name="Effect2" type="Label" parent="ConfirmWind/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Your Tier 1 building production will increase by x %"
+
+[node name="Effect3" type="Label" parent="ConfirmWind/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Your Tier 2 building production will increase by x %"
+
+[node name="Line_spacing" type="Label" parent="ConfirmWind/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = " "
+
+[node name="Requirement" type="Label" parent="ConfirmWind/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "You need X notoriety for next Ascension level."
+
+[node name="Ascensionlvl" type="Label" parent="ConfirmWind/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Your Ascension level will increase to x"
+
+[node name="ConfirmR" type="TextureButton" parent="ConfirmWind/Panel/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_i4gys")
+texture_pressed = ExtResource("3_b0xs6")
+texture_hover = ExtResource("4_p4kw8")
+texture_disabled = ExtResource("5_x782r")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Ascend" type="Label" parent="ConfirmWind/Panel/VBoxContainer/ConfirmR"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -11.5
+offset_right = 28.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.856067, 0.856067, 0.856067, 1)
+theme_override_font_sizes/font_size = 34
+text = "Ascend"
+horizontal_alignment = 1
+
+[node name="QuitW" type="TextureButton" parent="ConfirmWind/Panel"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("2_fcjsf")
+texture_hover = ExtResource("3_pxky0")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Tap" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_6ji7r")
+volume_db = -10.0
+pitch_scale = 2.0
+
+[connection signal="pressed" from="ConfirmWind/Panel/VBoxContainer/ConfirmR" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ConfirmWind/Panel/QuitW" to="." method="HideAscendwindow"]

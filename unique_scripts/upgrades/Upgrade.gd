@@ -11,6 +11,7 @@ extends TextureButton
 @export var build_req = 0
 @export var target_node: PackedScene
 @export_range (0,7) var target_build = 0
+var soundnode = preload("res://Scenes/upsound.tscn")
 var current_build
 
 # Called when the node enters the scene tree for the first time.
@@ -45,6 +46,8 @@ func _on_pressed():
 	Global.comfort -= cost
 	var purchasedver = target_node.instantiate()
 	get_tree().get_nodes_in_group("purchased")[0].add_child(purchasedver)
+	var soundeffect = soundnode.instantiate()
+	get_parent().add_child(soundeffect)
 	queue_free()
 
 func _on_mouse_entered():

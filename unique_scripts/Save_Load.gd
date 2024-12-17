@@ -1,4 +1,3 @@
-class_name SavenLoad
 extends Node
 
 func save_game():
@@ -28,6 +27,8 @@ func save_game():
 	var global_data = Global.save()
 	var json_stringG = JSON.stringify(global_data)
 	save_file.store_line(json_stringG)
+	Popups.SavePopup()
+	
 
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):
@@ -63,11 +64,12 @@ func load_game():
 		else:
 			# Firstly, we need to create the object and add it to the tree and set its position.
 			var new_object = load(node_data["filename"]).instantiate()
-			get_node(node_data["parent"]).add_child(new_object)
 
-			# Now we set the remaining variables.
+			# Now we set the remaining variables, so that scenes have their correct variables
+			# when going through ready() after being first put to scene
 			for i in node_data.keys():
 				if i == "filename" or i == "parent":
 					continue
 				new_object.set(i, node_data[i])
+			get_node(node_data["parent"]).add_child(new_object)
 

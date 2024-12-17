@@ -9,5 +9,5 @@ func _notorietywaiter():
 	if(Global.notoriety > 0):
 		self.visible = true
 		var tween = create_tween()
-		tween.tween_property(self, "position:y", -92, 0.5).set_ease(Tween.EASE_IN)
+		tween.tween_property(self, "position:y", -137, 0.5).set_ease(Tween.EASE_IN)
 		$Timer.queue_free()

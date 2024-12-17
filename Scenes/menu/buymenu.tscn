@@ -7,169 +7,229 @@
 [ext_resource type="Texture2D" uid="uid://bwnlv8w2tko0t" path="res://images/Buttoning/menu_hover.png" id="4_86v46"]
 [ext_resource type="Texture2D" uid="uid://cypwoxd6msrp1" path="res://images/Buttoning/menudowns.png" id="5_8yiyc"]
 [ext_resource type="Texture2D" uid="uid://c67c4015no388" path="res://images/bmenuicons/hoard_up.png" id="7_5dwap"]
+[ext_resource type="Texture2D" uid="uid://dqlx8yfvmltdr" path="res://images/Buttoning/submenu_title.png" id="8_0wmsp"]
 [ext_resource type="Texture2D" uid="uid://bwamrv3o44nfe" path="res://images/bmenuicons/upgrades.png" id="8_3ujoe"]
 [ext_resource type="Texture2D" uid="uid://dmovcmxjlyj7u" path="res://images/bmenuicons/trophy.png" id="9_yaspk"]
-[ext_resource type="Texture2D" uid="uid://cv6rodf5pranh" path="res://images/bmenuicons/ascend.png" id="10_72jwe"]
+[ext_resource type="Texture2D" uid="uid://xqh6itaxn1sa" path="res://images/bmenuicons/ununlockedasc.png" id="10_8cwmo"]
+[ext_resource type="PackedScene" uid="uid://kxakcow1x4vt" path="res://Scenes/menu/restarto.tscn" id="11_02rhl"]
+[ext_resource type="Texture2D" uid="uid://dnmpn66tub21r" path="res://images/bmenuicons/outahere.png" id="13_kapwn"]
 [ext_resource type="PackedScene" uid="uid://c4nfj4x3litdg" path="res://Scenes/menu/build_men.tscn" id="13_l0bpv"]
 [ext_resource type="PackedScene" uid="uid://885xoc6ug3ek" path="res://Scenes/menu/upgrade_men.tscn" id="14_wstuj"]
 [ext_resource type="PackedScene" uid="uid://cxaa3kptfl2c7" path="res://Scenes/menu/Trophy_men.tscn" id="15_3ilmi"]
-[ext_resource type="PackedScene" uid="uid://c6x5twklii704" path="res://Scenes/menu/restart_men.tscn" id="16_vlg0l"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_xwupj"]
-font_size = 28
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_3xt1d"]
-font_size = 28
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_r2a5q"]
-font_size = 28
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="AudioStream" uid="uid://cedcmjmiii7px" path="res://Audio/MenuTap.ogg" id="17_gh5ic"]
 
 [node name="Buymenu" type="TextureRect" groups=["Menus"]]
+visible = false
 z_index = 2
-offset_left = 295.0
-offset_top = 104.0
-offset_right = 1443.0
-offset_bottom = 756.0
-scale = Vector2(0.880311, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -507.445
+offset_top = -328.0
+offset_right = 507.445
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_nbtjh")
 expand_mode = 1
 script = ExtResource("2_7hr33")
 
 [node name="Hoardm" type="TextureButton" parent="." groups=["sub_menu"]]
 z_index = -1
+custom_minimum_size = Vector2(225, 156)
 layout_mode = 0
-offset_left = 14.0
+offset_left = 12.0
 offset_top = 16.0
-offset_right = 522.0
-offset_bottom = 326.0
-scale = Vector2(0.5, 0.5)
+offset_right = 237.0
+offset_bottom = 172.0
 disabled = true
 texture_normal = ExtResource("2_224gl")
 texture_pressed = ExtResource("3_hmsbu")
 texture_hover = ExtResource("4_86v46")
 texture_disabled = ExtResource("5_8yiyc")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="Hoardm"]
+custom_minimum_size = Vector2(203, 127)
 layout_mode = 0
-offset_left = 20.1147
-offset_top = 9.15289
-offset_right = 482.115
-offset_bottom = 263.153
+offset_left = 11.0
+offset_top = 6.0
+offset_right = 214.0
+offset_bottom = 133.0
 texture = ExtResource("7_5dwap")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="heade" type="TextureRect" parent="Hoardm"]
+custom_minimum_size = Vector2(213, 37)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 114.0
+offset_right = 218.0
+offset_bottom = 151.0
+texture = ExtResource("8_0wmsp")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="Hoardm"]
-layout_mode = 0
-offset_left = 199.131
-offset_top = 242.36
-offset_right = 300.131
-offset_bottom = 281.36
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -33.0
+offset_right = 41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 26
 text = "Hoard"
-label_settings = SubResource("LabelSettings_xwupj")
 uppercase = true
+metadata/_edit_lock_ = true
 
 [node name="Upgrades" type="TextureButton" parent="." groups=["sub_menu"]]
 z_index = -1
+custom_minimum_size = Vector2(225, 156)
 layout_mode = 0
-offset_left = 13.8602
-offset_top = 173.058
-offset_right = 267.86
-offset_bottom = 328.058
-scale = Vector2(0.5, 0.5)
+offset_left = 12.0
+offset_top = 174.0
+offset_right = 237.0
+offset_bottom = 330.0
 texture_normal = ExtResource("2_224gl")
 texture_pressed = ExtResource("3_hmsbu")
 texture_hover = ExtResource("4_86v46")
 texture_disabled = ExtResource("5_8yiyc")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="Upgrades"]
+custom_minimum_size = Vector2(203, 127)
 layout_mode = 0
-offset_left = 12.4632
-offset_top = 8.96914
-offset_right = 243.463
-offset_bottom = 135.969
+offset_left = 10.0
+offset_top = 5.99999
+offset_right = 213.0
+offset_bottom = 133.0
 texture = ExtResource("8_3ujoe")
+expand_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="Upgrades"]
+[node name="heade" type="TextureRect" parent="Upgrades"]
+custom_minimum_size = Vector2(213, 37)
 layout_mode = 0
-offset_left = 165.42
-offset_top = 241.18
-offset_right = 312.42
-offset_bottom = 280.18
+offset_left = 6.0
+offset_top = 114.0
+offset_right = 218.0
+offset_bottom = 151.0
+texture = ExtResource("8_0wmsp")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Upgrades"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.5
+offset_top = -40.0
+offset_right = 73.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 26
 text = "Upgrades
 "
-label_settings = SubResource("LabelSettings_xwupj")
 uppercase = true
+metadata/_edit_lock_ = true
 
 [node name="Trophies" type="TextureButton" parent="." groups=["sub_menu"]]
 z_index = -1
+custom_minimum_size = Vector2(225, 156)
 layout_mode = 0
-offset_left = 13.6315
-offset_top = 329.0
-offset_right = 521.632
-offset_bottom = 639.0
-scale = Vector2(0.5, 0.5)
+offset_left = 12.0
+offset_top = 331.0
+offset_right = 237.0
+offset_bottom = 487.0
+disabled = true
 texture_normal = ExtResource("2_224gl")
 texture_pressed = ExtResource("3_hmsbu")
 texture_hover = ExtResource("4_86v46")
 texture_disabled = ExtResource("5_8yiyc")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="Trophies"]
+custom_minimum_size = Vector2(206, 113)
 layout_mode = 0
 offset_left = 13.5962
 offset_top = 9.96575
-offset_right = 244.596
-offset_bottom = 136.966
+offset_right = 219.596
+offset_bottom = 122.966
 texture = ExtResource("9_yaspk")
+expand_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="Trophies"]
+[node name="heade" type="TextureRect" parent="Trophies"]
+custom_minimum_size = Vector2(213, 37)
 layout_mode = 0
-offset_left = 199.411
-offset_top = 253.139
-offset_right = 276.411
-offset_bottom = 276.139
+offset_left = 6.0
+offset_top = 114.0
+offset_right = 218.0
+offset_bottom = 151.0
+texture = ExtResource("8_0wmsp")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Trophies"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = -40.0
+offset_right = 67.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 26
 text = "Trophies
 "
-label_settings = SubResource("LabelSettings_3xt1d")
 horizontal_alignment = 1
 uppercase = true
+metadata/_edit_lock_ = true
 
-[node name="restarto" type="TextureButton" parent="." groups=["sub_menu"]]
-z_index = -1
+[node name="Requnmet" type="TextureRect" parent="Trophies"]
+self_modulate = Color(1, 1, 1, 0.909804)
+custom_minimum_size = Vector2(206, 113)
 layout_mode = 0
-offset_left = 13.8602
-offset_top = 484.997
-offset_right = 267.86
-offset_bottom = 639.997
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("2_224gl")
-texture_pressed = ExtResource("3_hmsbu")
-texture_hover = ExtResource("4_86v46")
-texture_disabled = ExtResource("5_8yiyc")
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 220.0
+offset_bottom = 149.0
+texture = ExtResource("13_kapwn")
+expand_mode = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="restarto"]
-position = Vector2(267.392, 139.526)
-texture = ExtResource("10_72jwe")
-
-[node name="Label" type="Label" parent="restarto"]
+[node name="Locked2" type="TextureRect" parent="Trophies/Requnmet"]
+custom_minimum_size = Vector2(203, 127)
 layout_mode = 0
-offset_left = 199.411
-offset_top = 249.153
-offset_right = 310.411
-offset_bottom = 288.153
-text = "ascend
-"
-label_settings = SubResource("LabelSettings_r2a5q")
-horizontal_alignment = 1
-uppercase = true
+offset_left = 1.0
+offset_right = 215.0
+offset_bottom = 145.0
+texture = ExtResource("10_8cwmo")
+expand_mode = 1
+
+[node name="restarto" parent="." instance=ExtResource("11_02rhl")]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 489.0
+offset_right = 237.0
+offset_bottom = 645.0
 
 [node name="Build_men" parent="." instance=ExtResource("13_l0bpv")]
+offset_left = 250.0
+offset_right = 290.0
 
 [node name="Upgrade_men" parent="." instance=ExtResource("14_wstuj")]
 visible = false
@@ -177,5 +237,7 @@ visible = false
 [node name="Trophy_men" parent="." instance=ExtResource("15_3ilmi")]
 visible = false
 
-[node name="restart_men" parent="." instance=ExtResource("16_vlg0l")]
-visible = false
+[node name="Tap" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("17_gh5ic")
+pitch_scale = 2.0

@@ -1,30 +1,58 @@
 extends Node
 
 #amount of "currency
-var comfort = 0
-var notoriety = 0
-var power = 1 # clicking power
-var cpsec = 0 #income for comfort
-var nsec = 0 #income for notoriety
-var bmod = 0.15 #building cost multiplier
-var nbmod = 0.05 #tier 2 building cost multiplier
-var mult = 1 #multiplier affecting income directly
-var nmult = 1 #multiplier affecting notoriety income directly
+var Acomfort: float = 0 #comfort gained in current Ascension
+var Gcomfort: float = 0 #Total comfort gained while playing
+var comfort: float = 0:
+	set(value):
+		if (value - comfort) > 0: #so it using up comfort won't lower the Acomfort/Gcomfort gained counter
+			Acomfort += value - comfort
+			Gcomfort += value - comfort
+		comfort = value
+var Anotoriety: float = 0 #notoriety gained in current Ascension
+var Gnotoriety: float = 0 #Total notoriety gained while playing
+var notoriety: float = 0:
+	set(value):
+		if (value - notoriety) > 0:
+			Anotoriety += value - notoriety
+			Gnotoriety += value - notoriety
+		notoriety = value
+var buildings: int = 0
+var power: float = 1 # clicking power
+var cpsec: float = 0 #income for comfort
+var nsec: float = 0 #income for notoriety
+var bmod: float = 0.15 #building cost multiplier
+var nbmod: float = 0.05 #tier 2 building cost multiplier
+var mult: float = 1 #multiplier affecting income directly
+var nmult: float = 1 #multiplier affecting notoriety income directly
 var hunger = false 
-var nofoodcount = 0
-var kobamount = 0
-var dergamount = 0
-var ateshroom = 0 #amount of mushrooms eaten, counted for stats and upgrades
-var clicks = 0 # counts clicks
+var nofoodcount: int = 0
+var kobamount: int = 0
+var dergamount: int = 0
+var ateshroom: int = 0 #amount of mushrooms eaten, counted for stats and upgrades
+var clicks: int = 0 # counts clicks
 #the debuff trio
 var chocdebuf = false 
 var gemdebuf = false
 var protest = false
-var reincarnation = 0
+var goldcmult: float = 1
+var reincarnation: int = 0:
+	set(value):
+		Global.goldcmult /= 1.15 ** (value)
+		Global.mult *= 1.1 ** (value)
+		Global.nmult *= 1.25 ** (value)
+		reincarnation = value
+#Settings
+var soundeff = true
+var autosave = true
+var autoload = true
 
 func empty():
+	Acomfort = 0
 	comfort = 0
+	Anotoriety = 0
 	notoriety = 0
+	buildings = 0
 	power = 1 
 	cpsec = 0
 	nsec = 0 
@@ -41,11 +69,18 @@ func empty():
 	chocdebuf = false 
 	gemdebuf = false
 	protest = false
+	goldcmult = 1
+	autoload = true
 
 func save():
 	var save_dict = {
+		"Acomfort" : Acomfort,
+		"Gcomfort" : Gcomfort,
 		"comfort" : comfort,
+		"Anotoriety" : Anotoriety,
+		"Gnotoriety" : Gnotoriety,
 		"notoriety" : notoriety,
+		"buildings": buildings,
 		"power" : power,
 		"cpsec" : cpsec,
 		"nsec" : nsec,
@@ -62,7 +97,10 @@ func save():
 		"chocdebuff" : chocdebuf,
 		"gemdebuff" : gemdebuf,
 		"protest" : protest,
-		"reincarnation" : reincarnation
+		"goldcmult" : goldcmult,
+		"reincarnation" : reincarnation,
+		"soundeff" : soundeff,
+		"autosave" : autosave
 	}
 	return save_dict
 

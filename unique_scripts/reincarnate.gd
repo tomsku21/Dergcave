@@ -1,24 +1,29 @@
 extends Control
-var restartreq
+var restartreq: float
+var minrestartreq: float
+var goldeffect: float
+var comfeffect: float
+var noteffect: float
+var rlevel = 0
 
-func _ready():
-	$restarto.disabled = true
-
+#update notoriety requirement for ascending and it's effects for next run.
 func _process(_delta):
-	restartreq = 1000 * 10 ** Global.reincarnation
-	$restarto.disabled = Global.notoriety < restartreq
-	$restarto/requnmet.visible = Global.notoriety < restartreq
-	$Req.text = str(restartreq - Global.notoriety, " notoriety")
+	restartreq = 1000 + 25 * 5.5 ** (Global.reincarnation + rlevel + 1)
+	minrestartreq = 1000 + 25 * 5.5 ** (Global.reincarnation + 1)
+	goldeffect = 100 * (1.15 ** (Global.reincarnation + rlevel) -1)
+	comfeffect = 100 * (1.1 ** (Global.reincarnation + rlevel) - 1)
+	noteffect = 100 * (1.25 ** (Global.reincarnation + rlevel) - 1)
+	if Global.notoriety >= restartreq:
+		rlevel += 1
 
-#1. empty global valuables. Global is above the main scene, so needs to be reset on it's own
-#2. reload scene, returns everything to their default states.
-#	-does not account for achievements. saving their parent node's state and loading it would fix
-#	-figure out how to do that without putting values down on a file.
-#3. raise reincarnation amount, global empty doesn't reset it, so no need for extra dancing for this one
-#4. lower cost multipliers and income based on reincarnation amount, needs a better thought out calculation
+#opens confirmation window for ascending, Rconfirm scene
 func _on_pressed():
-	Global.empty()
-	get_tree().reload_current_scene()
-	Global.reincarnation += 1
-	Global.nbmod /= 1.25 ** Global.reincarnation
-	Global.mult *= 1 + (0.5 * Global.reincarnation)
+	Rconfirm.Ascendwindow(self)
+	if Global.soundeff == true:
+		%Tap.play()
+
+func _on_mouse_entered():
+	Popups.AscendPopup(Rect2i( Vector2i(global_position) , Vector2i(size)), self)
+
+func _on_mouse_exited():
+	Popups.HideAscendPopup()

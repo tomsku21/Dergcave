@@ -1,0 +1,142 @@
+[gd_scene load_steps=10 format=3 uid="uid://bg7f217uo4uek"]
+
+[ext_resource type="Script" path="res://Scenes/menu/WipeConfirm.gd" id="1_spgnw"]
+[ext_resource type="Texture2D" uid="uid://m3s2atvoqmjd" path="res://images/Buttoning/Genbutton_base.png" id="2_dnb15"]
+[ext_resource type="Texture2D" uid="uid://cg7n7yycd7b2v" path="res://images/Buttoning/Genbutton_select.png" id="3_1y160"]
+[ext_resource type="Texture2D" uid="uid://bk7501bctsbri" path="res://images/Buttoning/Genbutton_hover.png" id="4_h2d5c"]
+[ext_resource type="Texture2D" uid="uid://cjwnv441k8nks" path="res://images/Buttoning/Genbutton_down.png" id="5_s2536"]
+[ext_resource type="Texture2D" uid="uid://cwqv5p8gaiupg" path="res://images/Buttoning/X_active.png" id="6_02ffe"]
+[ext_resource type="Texture2D" uid="uid://dfh1f3u42e68q" path="res://images/Buttoning/X_hover.png" id="7_j5jmd"]
+[ext_resource type="AudioStream" uid="uid://cedcmjmiii7px" path="res://Audio/MenuTap.ogg" id="8_3tbnr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnl1m"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_right = 15.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0784314, 0.0745098, 0.0705882, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.25098, 0.105882, 0, 1)
+border_blend = true
+shadow_size = 1
+
+[node name="WipeConfirm" type="Control"]
+top_level = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_spgnw")
+
+[node name="ConfirmWind" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 2
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="ConfirmWind"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.0431373, 0.0392157, 0.223529)
+
+[node name="Panel" type="PanelContainer" parent="ConfirmWind"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -102.0
+offset_right = 212.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qnl1m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmWind/Panel"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Wipe" type="Label" parent="ConfirmWind/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Wipe Save"
+horizontal_alignment = 1
+
+[node name="Label" type="RichTextLabel" parent="ConfirmWind/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.870588, 0.870588, 0.870588, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+text = "[p]Are you [b]absolutely[/b] sure that you want to reset your save file.[/p]
+[p]You will lose your progress, reincarnations and [s]achievements[/s][/p]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+tab_size = 3
+shortcut_keys_enabled = false
+
+[node name="ConfirmR" type="TextureButton" parent="ConfirmWind/Panel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_dnb15")
+texture_pressed = ExtResource("3_1y160")
+texture_hover = ExtResource("4_h2d5c")
+texture_disabled = ExtResource("5_s2536")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Wiping" type="Label" parent="ConfirmWind/Panel/VBoxContainer/ConfirmR"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -11.5
+offset_right = 28.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "Wipe"
+horizontal_alignment = 1
+
+[node name="QuitW" type="TextureButton" parent="ConfirmWind/Panel"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("6_02ffe")
+texture_hover = ExtResource("7_j5jmd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Tap" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_3tbnr")
+volume_db = -10.0
+pitch_scale = 2.0
+
+[connection signal="pressed" from="ConfirmWind/Panel/VBoxContainer/ConfirmR" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ConfirmWind/Panel/QuitW" to="." method="_Hide_Wipe_window"]

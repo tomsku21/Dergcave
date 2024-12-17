@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ce2ebtxf3riga"]
+[gd_scene load_steps=9 format=3 uid="uid://ce2ebtxf3riga"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_yksfm"]
 [ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_gde2n"]
@@ -6,15 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_l6oxf"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/Upgrade.gd" id="5_s334l"]
 [ext_resource type="PackedScene" uid="uid://d861s6bej7f5" path="res://Scenes/upgrades/purchased/coin_up_2p.tscn" id="6_1eahk"]
-[ext_resource type="Texture2D" uid="uid://bqaeq5ce72xsd" path="res://images/UpgradeIcon/upgrades/coiner.png" id="7_j2v6i"]
+[ext_resource type="Texture2D" uid="uid://v7064s6bevyh" path="res://images/UpgradeIcon/upgrades/coiner2.png" id="7_pjr8e"]
 
 [sub_resource type="Theme" id="Theme_ttucu"]
 default_font_size = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_qtb5k"]
-font_size = 42
-font_color = Color(0, 0, 0, 1)
-outline_size = 6
 
 [node name="coin_up2" type="TextureButton" groups=["Persist"]]
 visible = false
@@ -42,16 +37,7 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_j2v6i")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "2"
-label_settings = SubResource("LabelSettings_qtb5k")
+texture = ExtResource("7_pjr8e")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

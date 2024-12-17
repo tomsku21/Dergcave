@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqr65ujb80cx0"]
+[gd_scene load_steps=9 format=3 uid="uid://dqr65ujb80cx0"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_vfvpb"]
 [ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_ea8bn"]
@@ -6,15 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_7smdw"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/sharpbone_up.gd" id="5_8b3sv"]
 [ext_resource type="PackedScene" uid="uid://dw4imqy58xb0" path="res://Scenes/upgrades/purchased/sharpbone_upp.tscn" id="6_4o4vb"]
-[ext_resource type="Texture2D" uid="uid://c5bevvf8it038" path="res://images/UpgradeIcon/upgrades/bone_up.png" id="6_mafpk"]
+[ext_resource type="Texture2D" uid="uid://dsbu4s2eat58j" path="res://images/UpgradeIcon/upgrades/sharpbones.png" id="7_01ekp"]
 
 [sub_resource type="Theme" id="Theme_ttucu"]
 default_font_size = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_qtb5k"]
-font_size = 42
-font_color = Color(0, 0, 0, 1)
-outline_size = 6
 
 [node name="sharpbone_up" type="TextureButton" groups=["Persist"]]
 visible = false
@@ -41,16 +36,7 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_mafpk")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "2"
-label_settings = SubResource("LabelSettings_qtb5k")
+texture = ExtResource("7_01ekp")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

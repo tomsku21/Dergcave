@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjpfnihpijk01"]
+[gd_scene load_steps=9 format=3 uid="uid://bjpfnihpijk01"]
 
 [ext_resource type="Texture2D" uid="uid://qmqqxgdwwjvw" path="res://images/Buttoning/build_base.png" id="1_cya86"]
 [ext_resource type="Texture2D" uid="uid://7ct1gd0f0cd1" path="res://images/Buttoning/build_base_selected.png" id="2_g28j6"]
@@ -6,58 +6,30 @@
 [ext_resource type="Texture2D" uid="uid://nvg0dymna5ic" path="res://images/Buttoning/build_base_down.png" id="4_4bbe4"]
 [ext_resource type="Script" path="res://unique_scripts/tier2build.gd" id="5_bvr2e"]
 [ext_resource type="Texture2D" uid="uid://jxjkalbdjex7" path="res://images/UpgradeIcon/buildings/book_build.png" id="6_6lsm4"]
-[ext_resource type="Texture2D" uid="uid://c7f1p3aevlu5a" path="res://images/bmenuicons/pat.png" id="7_eyb47"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_bnw0q"]
-font_size = 42
-
-[sub_resource type="LabelSettings" id="LabelSettings_kfath"]
-line_spacing = 0.0
-font_size = 64
-
-[sub_resource type="LabelSettings" id="LabelSettings_7csti"]
-font_size = 42
-
-[sub_resource type="LabelSettings" id="LabelSettings_umgkn"]
-font_size = 54
+[ext_resource type="Texture2D" uid="uid://bqaeq5ce72xsd" path="res://images/UpgradeIcon/upgrades/coiner.png" id="7_j8g0k"]
+[ext_resource type="AudioStream" uid="uid://cedcmjmiii7px" path="res://Audio/MenuTap.ogg" id="8_db6ek"]
 
 [node name="tome_build" type="TextureButton" groups=["Building", "Persist"]]
 visible = false
-tooltip_text = "Some claim cooking to be like magic. These books are magical and help you whip up a nice meal"
+custom_minimum_size = Vector2(704, 100)
 texture_normal = ExtResource("1_cya86")
 texture_pressed = ExtResource("2_g28j6")
 texture_hover = ExtResource("3_o6r78")
 texture_disabled = ExtResource("4_4bbe4")
+ignore_texture_size = true
+stretch_mode = 0
 script = ExtResource("5_bvr2e")
+title = "Magical Tomes"
+description = "Helps with math homework."
 bcost = 100
-bpower = 75.0
+bpower = 25.0
 modifier = 1.0
+tier = 2
 
 [node name="I" type="Sprite2D" parent="."]
-position = Vector2(144, 98)
-scale = Vector2(0.667708, 0.667709)
+position = Vector2(68, 49)
+scale = Vector2(0.325, 0.325)
 texture = ExtResource("6_6lsm4")
-
-[node name="A" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1280.0
-offset_top = 118.0
-offset_right = 1551.0
-offset_bottom = 176.0
-theme_override_font_sizes/font_size = 18
-label_settings = SubResource("LabelSettings_bnw0q")
-horizontal_alignment = 2
-
-[node name="Desc" type="Label" parent="."]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 16.0
-offset_right = 1280.0
-offset_bottom = 172.0
-theme_override_font_sizes/font_size = 14
-text = "Magic Tome"
-label_settings = SubResource("LabelSettings_kfath")
-horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -65,29 +37,64 @@ autostart = true
 [node name="Aupdate" type="Timer" parent="."]
 autostart = true
 
+[node name="A" type="Label" parent="."]
+layout_mode = 0
+offset_left = 554.0
+offset_top = 56.0
+offset_right = 826.0
+offset_bottom = 114.0
+scale = Vector2(0.5, 0.5)
+text = "1"
+horizontal_alignment = 2
+
 [node name="P" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1280.0
-offset_top = 32.0
-offset_right = 1552.0
-offset_bottom = 90.0
-text = "+0.1 A/s"
-label_settings = SubResource("LabelSettings_7csti")
+offset_left = 554.0
+offset_top = 15.0
+offset_right = 826.0
+offset_bottom = 73.0
+scale = Vector2(0.5, 0.5)
+text = "+0.1 N/s"
 horizontal_alignment = 2
+
+[node name="Desc" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -216.0
+offset_top = 10.0
+offset_right = 718.0
+offset_bottom = 100.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "Magical Tomes"
+horizontal_alignment = 1
 
 [node name="C" type="Label" parent="."]
 layout_mode = 0
-offset_left = 400.0
-offset_top = 112.0
-offset_right = 668.0
-offset_bottom = 186.0
-theme_override_font_sizes/font_size = 18
-label_settings = SubResource("LabelSettings_umgkn")
+offset_left = 170.0
+offset_top = 52.0
+offset_right = 438.0
+offset_bottom = 134.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 54
+text = "1.2"
 
 [node name="cost" type="Sprite2D" parent="C"]
-position = Vector2(-32, 16)
-texture = ExtResource("7_eyb47")
+position = Vector2(-35, 40)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_j8g0k")
 
+[node name="Tap" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_db6ek")
+pitch_scale = 1.5
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Aupdate" to="." method="_autoupdate"]

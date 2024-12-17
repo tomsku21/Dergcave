@@ -36,7 +36,7 @@ func save():
 func _on_timer_timeout():
 	new_mult = (1 +(0.5 *  chest_build.amount ** 0.5))
 	if new_mult - current_mult != 0:
-		gold_build.modifier *= (gold_build.modifier*new_mult)/current_mult
+		gold_build.modifier = (gold_build.modifier*new_mult)/current_mult
 		current_mult = new_mult
 
 func _on_mouse_entered():

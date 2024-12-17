@@ -1,16 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bky71iebkkng5"]
+[gd_scene load_steps=5 format=3 uid="uid://bky71iebkkng5"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_edwfp"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/purchasedsave.gd" id="2_053dw"]
-[ext_resource type="Texture2D" uid="uid://2se8xcfiuhbw" path="res://images/UpgradeIcon/upgrades/art.png" id="6_nipnn"]
+[ext_resource type="Texture2D" uid="uid://dlab7q01eyfmn" path="res://images/UpgradeIcon/upgrades/sacred.png" id="3_tpshh"]
 
 [sub_resource type="Theme" id="Theme_tesf0"]
 default_font_size = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_i1t18"]
-font_size = 42
-font_color = Color(0, 0, 0, 1)
-outline_size = 6
 
 [node name="ewartifact_upp" type="TextureRect" groups=["Persist"]]
 custom_minimum_size = Vector2(75, 75)
@@ -30,16 +25,7 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_nipnn")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "3"
-label_settings = SubResource("LabelSettings_i1t18")
+texture = ExtResource("3_tpshh")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

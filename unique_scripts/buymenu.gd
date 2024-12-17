@@ -24,6 +24,7 @@ func _on_button_pressed(_name):
 		"restarto":
 			change_screen($restart_men, $restarto)
 
+#close old menu and enable it's button. open new menu and disable it's button.
 func change_screen(new_menu, pbutton):
 	if current_menu:
 		current_button.disabled = false
@@ -33,3 +34,5 @@ func change_screen(new_menu, pbutton):
 	if new_menu:
 		current_button.disabled = true
 		current_menu.visible = true
+	if Global.soundeff == true:
+		%Tap.play()

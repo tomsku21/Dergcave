@@ -1,8 +1,10 @@
-[gd_scene load_steps=38 format=3 uid="uid://885xoc6ug3ek"]
+[gd_scene load_steps=40 format=3 uid="uid://885xoc6ug3ek"]
 
 [ext_resource type="PackedScene" uid="uid://bcyt37tbqcdka" path="res://Scenes/upgrades/coin_up.tscn" id="1_0gtcv"]
+[ext_resource type="Texture2D" uid="uid://d1fjdg1fin3i7" path="res://images/Buttoning/ownedUpsclosed.png" id="1_4po36"]
+[ext_resource type="Script" path="res://unique_scripts/UpHeader.gd" id="1_p1lsm"]
 [ext_resource type="PackedScene" uid="uid://pm1ha8iagsjg" path="res://Scenes/upgrades/choc_up.tscn" id="2_0u3pm"]
-[ext_resource type="Texture2D" uid="uid://4tvp4h4ssqhd" path="res://images/Buttoning/ownedUps.png" id="3_2u638"]
+[ext_resource type="Texture2D" uid="uid://4tvp4h4ssqhd" path="res://images/Buttoning/ownedUpsopen.png" id="3_0xu83"]
 [ext_resource type="PackedScene" uid="uid://cvux61yorlw8x" path="res://Scenes/upgrades/coin_up_3.tscn" id="3_m3m4u"]
 [ext_resource type="PackedScene" uid="uid://ce2ebtxf3riga" path="res://Scenes/upgrades/coin_up_2.tscn" id="3_tqwqm"]
 [ext_resource type="PackedScene" uid="uid://dvgti0imfjpeu" path="res://Scenes/upgrades/coin_up_4.tscn" id="4_hu64x"]
@@ -43,167 +45,217 @@
 z_index = -1
 layout_mode = 3
 anchors_preset = 0
-offset_left = -334.24
-offset_top = -86.7052
-offset_right = -294.24
-offset_bottom = -46.7052
+offset_left = 250.0
+offset_top = 13.0
+offset_right = 250.0
+offset_bottom = 13.0
 
 [node name="basecol" type="TextureRect" parent="."]
 modulate = Color(0.266667, 0.231373, 0.176471, 1)
 show_behind_parent = true
 layout_mode = 0
-offset_left = 617.24
-offset_top = 101.705
-offset_right = 1480.24
-offset_bottom = 736.705
+offset_right = 759.0
+offset_bottom = 635.0
 texture = SubResource("CanvasTexture_xndgw")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-custom_minimum_size = Vector2(774, 0)
 layout_mode = 2
-offset_left = 630.24
-offset_top = 118.705
-offset_right = 1456.24
-offset_bottom = 471.705
+offset_right = 759.0
+offset_bottom = 627.0
+grow_horizontal = 2
 
-[node name="Upgrade_cont" type="HFlowContainer" parent="ScrollContainer"]
+[node name="VContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="UUVContainer" type="VBoxContainer" parent="ScrollContainer/VContainer"]
+layout_mode = 2
+script = ExtResource("1_p1lsm")
+open_texture = ExtResource("3_0xu83")
+closed_texture = ExtResource("1_4po36")
+
+[node name="Header" type="TextureRect" parent="ScrollContainer/VContainer/UUVContainer"]
+custom_minimum_size = Vector2(759, 40)
+layout_mode = 2
+texture = ExtResource("3_0xu83")
+
+[node name="Label" type="Label" parent="ScrollContainer/VContainer/UUVContainer/Header"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.5
+offset_top = -13.0
+offset_right = 102.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "Unpurchased Upgrades"
+
+[node name="Button" type="Button" parent="ScrollContainer/VContainer/UUVContainer/Header"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = 0.23999
+offset_top = -0.2948
+offset_right = 759.24
+offset_bottom = 39.7052
+
+[node name="Upgrade_cont" type="HFlowContainer" parent="ScrollContainer/VContainer/UUVContainer"]
 show_behind_parent = true
-custom_minimum_size = Vector2(774, 0)
+custom_minimum_size = Vector2(707, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="coin_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("1_0gtcv")]
 layout_mode = 2
 
-[node name="coin_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("1_0gtcv")]
-visible = false
+[node name="coin_up2" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("3_tqwqm")]
 layout_mode = 2
 
-[node name="coin_up2" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("3_tqwqm")]
+[node name="coin_up3" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("3_m3m4u")]
 layout_mode = 2
 
-[node name="coin_up3" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("3_m3m4u")]
+[node name="coin_up4" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("4_hu64x")]
 layout_mode = 2
 
-[node name="coin_up4" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("4_hu64x")]
+[node name="coin_up5" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("5_xvnkp")]
 layout_mode = 2
 
-[node name="coin_up5" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("5_xvnkp")]
+[node name="choc_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("2_0u3pm")]
 layout_mode = 2
 
-[node name="choc_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("2_0u3pm")]
+[node name="headpats_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("6_i0bhf")]
 layout_mode = 2
 
-[node name="headpats_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("6_i0bhf")]
+[node name="chinscritch_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("7_cl84q")]
 layout_mode = 2
 
-[node name="chinscritch_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("7_cl84q")]
+[node name="bellyrub_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("8_34e73")]
 layout_mode = 2
 
-[node name="bellyrub_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("8_34e73")]
+[node name="gem_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("6_7l4ne")]
 layout_mode = 2
 
-[node name="gem_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("6_7l4ne")]
+[node name="gem_up2" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("7_623kp")]
 layout_mode = 2
 
-[node name="gem_up2" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("7_623kp")]
+[node name="gem_up3" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("8_d31q8")]
 layout_mode = 2
 
-[node name="gem_up3" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("8_d31q8")]
+[node name="gem_up4" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("13_exp3n")]
 layout_mode = 2
 
-[node name="gem_up4" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("13_exp3n")]
+[node name="kob_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("9_jo6dv")]
 layout_mode = 2
 
-[node name="kob_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("9_jo6dv")]
+[node name="kob_up2" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("10_n5jiv")]
 layout_mode = 2
 
-[node name="kob_up2" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("10_n5jiv")]
+[node name="kob_up3" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("11_pk4pr")]
 layout_mode = 2
 
-[node name="kob_up3" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("11_pk4pr")]
+[node name="kob_up4" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("17_yykkv")]
 layout_mode = 2
 
-[node name="kob_up4" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("17_yykkv")]
+[node name="finemeal_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("15_bmfof")]
 layout_mode = 2
 
-[node name="bone_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("18_sxl4q")]
+[node name="qualitysoil_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("16_vv0qb")]
 layout_mode = 2
 
-[node name="bone_up2" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("13_d8ju8")]
+[node name="dictionary_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("17_07434")]
 layout_mode = 2
 
-[node name="bone_up3" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("14_bm4ip")]
+[node name="gemsort_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("18_wr8gf")]
 layout_mode = 2
 
-[node name="finemeal_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("15_bmfof")]
+[node name="gnawedbone_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("18_sxl4q")]
 layout_mode = 2
 
-[node name="qualitysoil_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("16_vv0qb")]
+[node name="goldbone_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("13_d8ju8")]
 layout_mode = 2
 
-[node name="dictionary_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("17_07434")]
+[node name="sharpbone_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("14_bm4ip")]
 layout_mode = 2
 
-[node name="gemsort_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("18_wr8gf")]
+[node name="lights_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("19_boogh")]
 layout_mode = 2
 
-[node name="gnawedbone_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("18_sxl4q")]
+[node name="cookbook_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("20_e4tjf")]
 layout_mode = 2
 
-[node name="goldbone_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("13_d8ju8")]
+[node name="darkbook_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("21_bfm5q")]
 layout_mode = 2
 
-[node name="sharpbone_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("14_bm4ip")]
+[node name="largechest_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("22_b61jn")]
 layout_mode = 2
 
-[node name="lights_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("19_boogh")]
+[node name="goldenchest_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("23_s25lf")]
 layout_mode = 2
 
-[node name="cookbook_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("20_e4tjf")]
+[node name="vault_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("24_kk8kc")]
 layout_mode = 2
 
-[node name="darkbook_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("21_bfm5q")]
+[node name="fancyartifact_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("25_mfkfb")]
 layout_mode = 2
 
-[node name="largechest_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("22_b61jn")]
+[node name="ewartifact_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("26_jmhpy")]
 layout_mode = 2
 
-[node name="goldenchest_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("23_s25lf")]
+[node name="sacredartifact_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("27_v1g6w")]
 layout_mode = 2
 
-[node name="vault_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("24_kk8kc")]
+[node name="hours_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("31_wr3er")]
 layout_mode = 2
 
-[node name="fancyartifact_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("25_mfkfb")]
+[node name="wizardhat_up" parent="ScrollContainer/VContainer/UUVContainer/Upgrade_cont" instance=ExtResource("28_5xla8")]
 layout_mode = 2
 
-[node name="ewartifact_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("26_jmhpy")]
+[node name="PUVContainer" type="VBoxContainer" parent="ScrollContainer/VContainer"]
 layout_mode = 2
+script = ExtResource("1_p1lsm")
+open_texture = ExtResource("3_0xu83")
+closed_texture = ExtResource("1_4po36")
 
-[node name="sacredartifact_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("27_v1g6w")]
+[node name="Header" type="TextureRect" parent="ScrollContainer/VContainer/PUVContainer"]
+custom_minimum_size = Vector2(759, 40)
 layout_mode = 2
+texture = ExtResource("3_0xu83")
+expand_mode = 1
 
-[node name="hours_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("31_wr3er")]
-layout_mode = 2
+[node name="Label" type="Label" parent="ScrollContainer/VContainer/PUVContainer/Header"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -13.0
+offset_right = 90.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 18
+text = "Purchased Upgrades"
 
-[node name="wizardhat_up" parent="ScrollContainer/Upgrade_cont" instance=ExtResource("28_5xla8")]
-layout_mode = 2
-
-[node name="purchased_ups" type="TextureRect" parent="."]
-layout_mode = 2
-offset_left = 617.494
-offset_top = 417.58
-offset_right = 1469.49
-offset_bottom = 735.58
-scale = Vector2(1.01, 1)
-texture = ExtResource("3_2u638")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="purchased_ups"]
-custom_minimum_size = Vector2(774, 0)
+[node name="Button" type="Button" parent="ScrollContainer/VContainer/PUVContainer/Header"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 12.6198
-offset_top = 38.1252
-offset_right = 838.62
-offset_bottom = 342.125
+offset_left = 0.23999
+offset_top = -0.2948
+offset_right = 759.24
+offset_bottom = 39.7052
 
-[node name="purchased_cont" type="HFlowContainer" parent="purchased_ups/ScrollContainer" groups=["purchased"]]
+[node name="Upgrade_cont" type="HFlowContainer" parent="ScrollContainer/VContainer/PUVContainer" groups=["purchased"]]
 show_behind_parent = true
-custom_minimum_size = Vector2(774, 0)
+custom_minimum_size = Vector2(707, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+
+[connection signal="pressed" from="ScrollContainer/VContainer/UUVContainer/Header/Button" to="ScrollContainer/VContainer/UUVContainer" method="_on_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VContainer/PUVContainer/Header/Button" to="ScrollContainer/VContainer/PUVContainer" method="_on_button_pressed"]

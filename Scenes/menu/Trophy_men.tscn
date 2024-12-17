@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxaa3kptfl2c7"]
 
-[ext_resource type="Texture2D" uid="uid://4tvp4h4ssqhd" path="res://images/Buttoning/ownedUps.png" id="1_pxagr"]
+[ext_resource type="Texture2D" uid="uid://4tvp4h4ssqhd" path="res://images/Buttoning/ownedUpsopen.png" id="1_pxagr"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_xndgw"]
 

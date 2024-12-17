@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://fjr6fsu17wjl"]
+[gd_scene load_steps=9 format=3 uid="uid://fjr6fsu17wjl"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_qeajx"]
 [ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_u5qwm"]
@@ -6,15 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_4chdj"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/cookbook_up.gd" id="5_qgjhu"]
 [ext_resource type="PackedScene" uid="uid://t62x02vbi1m8" path="res://Scenes/upgrades/purchased/cookbook_upp.tscn" id="6_cb32g"]
-[ext_resource type="Texture2D" uid="uid://bjy2rae6313bh" path="res://images/UpgradeIcon/upgrades/book.png" id="7_o55nf"]
+[ext_resource type="Texture2D" uid="uid://ukhwedv8cqk1" path="res://images/UpgradeIcon/upgrades/cookbook.png" id="7_g1sne"]
 
 [sub_resource type="Theme" id="Theme_tesf0"]
 default_font_size = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_5r0s2"]
-font_size = 42
-font_color = Color(0, 0, 0, 1)
-outline_size = 6
 
 [node name="cookbook_up" type="TextureButton" groups=["Persist"]]
 visible = false
@@ -32,7 +27,7 @@ script = ExtResource("5_qgjhu")
 title = "Recipe Book"
 description = "Increases kobold Income based on the amount of Mushrooms owned"
 cost = 100000
-tier = 1
+tier = 2
 build_req = 10
 target_node = ExtResource("6_cb32g")
 
@@ -41,16 +36,7 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_o55nf")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "2"
-label_settings = SubResource("LabelSettings_5r0s2")
+texture = ExtResource("7_g1sne")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

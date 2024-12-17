@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_mqu3l"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/workinghours_upp.gd" id="2_qr1oi"]
-[ext_resource type="Texture2D" uid="uid://bpbxp3o0v761k" path="res://images/UpgradeIcon/upgrades/WIP.png" id="3_uvg43"]
+[ext_resource type="Texture2D" uid="uid://d4ly2e61hanqr" path="res://images/UpgradeIcon/upgrades/hours.png" id="3_f23pf"]
 
 [node name="hours_upp" type="TextureRect" groups=["Persist"]]
 custom_minimum_size = Vector2(75, 75)
@@ -21,7 +21,7 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_uvg43")
+texture = ExtResource("3_f23pf")
 
 [node name="Offwork" type="Timer" parent="."]
 wait_time = 960.0

@@ -4,14 +4,13 @@ extends Sprite2D
 #for now vain yksi
 #derg interaktiot tapahtuvat dergin puolella.
 @export_range (0,7) var target_build = 0
-@export var particle: PackedScene
 var current_build
 var effect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect_build()
-	effect = particle.instantiate()
+	self.visible = false
 
 func connect_build():
 	var buildings = get_tree().get_nodes_in_group("Building")
@@ -30,9 +29,7 @@ func timeout():
 		connect_build()
 	if (current_build.amount > 9):
 		self.visible = true
-		get_tree().root.add_child(effect)
-		effect.global_position = global_position
 		var tween = get_tree().create_tween()
 		tween.tween_property(self, "modulate:a", 0, 0)
-		tween.tween_property(self, "modulate:a", 1, 0.75)
+		tween.tween_property(self, "modulate:a", 1, 0.2)
 		$Timer.queue_free()

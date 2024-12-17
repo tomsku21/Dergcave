@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_jrosk"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/largechest_upp.gd" id="2_cohx3"]
-[ext_resource type="Texture2D" uid="uid://blla6vlbiyjq4" path="res://images/UpgradeIcon/upgrades/chest.png" id="5_lfu0u"]
+[ext_resource type="Texture2D" uid="uid://d3haru5dinpk" path="res://images/UpgradeIcon/upgrades/largchest.png" id="3_ta3qc"]
 
 [sub_resource type="Theme" id="Theme_tesf0"]
 default_font_size = 16
@@ -25,7 +25,7 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_lfu0u")
+texture = ExtResource("3_ta3qc")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

@@ -5,7 +5,10 @@ extends TextureButton
 @export var description: String
 @export var bcost = 0 #basecost
 @export var cost: float
-@export var amount = 0
+@export var amount = 0:
+	set(value):
+		Global.buildings += value - amount
+		amount = value
 @export var bpower: float #power before modifications. Increases to this should increase income by a ton
 @export var power = 0 #current power
 @export var modifier: float #outside increases should affect this value
@@ -16,20 +19,18 @@ var costx10: float
 var income = 0 #Notoriety per second
 var cost_multiplier = 1
 var gold #gold building, this building uses gold amount for cost.
+var hovered = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	cost = bcost * (1+ Global.nbmod * cost_multiplier) ** amount
-	costx10 = snapped((bcost * (((1 + Global.nbmod) ** (amount + 10)) - (1 + Global.nbmod) ** amount)) / (Global.nbmod), 0.01)
-	power = bpower * modifier
-	get_node("C").text = Global.bigprint(cost)
-	get_node("P").text = str("+", snapped(power, 0.1), " N/s")
-	get_node("A").text = str(amount)
+	_update(0,1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	gold = get_tree().get_nodes_in_group("Building")[0]
 	self.disabled = (gold.amount < cost)
+	if hovered == true:
+		Popups.BuildPopup(Rect2i( Vector2i(global_position) , Vector2i(size)), self)
 
 
 func save():
@@ -42,7 +43,6 @@ func save():
 		"modifier" : modifier,
 		"income" : income,
 		"power" : power,
-		"cost" : cost,
 		"cost_multiplier" : cost_multiplier
 	}
 	return save_dict
@@ -57,11 +57,11 @@ func _update(famount, fmodifier):
 		if amount < 0:
 			amount = 0
 		modifier *= fmodifier
-		power = bpower * modifier
+		power = bpower * modifier * Global.nmult
 		Global.nsec += amount * power - income
 		income = power * amount
-		cost = bcost * (1 + Global.nbmod * cost_multiplier) ** amount
-		costx10 = snapped((bcost * (((1 + Global.nbmod) ** (amount + 10)) - (1 + Global.nbmod) ** amount)) / (Global.nbmod), 0.01)
+		cost = round(bcost * (1 + Global.nbmod * cost_multiplier) ** amount)
+		costx10 = snapped(round(bcost * (((1 + Global.nbmod) ** (amount + 10)) - (1 + Global.nbmod) ** amount)) / (Global.nbmod), 0.01)
 		#update text fields at end
 		get_node("C").text = Global.bigprint(cost)
 		get_node("P").text = str("+", Global.bigprint(power), "N/s")
@@ -78,9 +78,11 @@ func _on_pressed():
 	else:	
 		gold._update(-cost,1)
 		_update(1, 1)
+	if Global.soundeff == true:
+		%Tap.play()
 
 func _on_timer_timeout():
-	if (gold.amount >= cost - 10):
+	if (gold.amount >= bcost - 10):
 		self.visible = true
 		$Timer.queue_free()
 
@@ -88,7 +90,8 @@ func _autoupdate():
 	_update(0,1)
 
 func _on_mouse_entered():
-	Popups.BuildPopup(Rect2i( Vector2i(global_position) , Vector2i(size)), self)
+	hovered = true
 	
 func _on_mouse_exited():
+	hovered = false
 	Popups.HideBuildPopup()

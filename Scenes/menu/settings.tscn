@@ -1,46 +1,352 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4sjr32tthrg8"]
+[gd_scene load_steps=13 format=3 uid="uid://b4sjr32tthrg8"]
 
 [ext_resource type="Script" path="res://unique_scripts/Settings.gd" id="1_pssow"]
+[ext_resource type="Texture2D" uid="uid://m3s2atvoqmjd" path="res://images/Buttoning/Genbutton_base.png" id="2_1ur77"]
+[ext_resource type="Texture2D" uid="uid://bq7uy7t4m2bqf" path="res://images/Buttoning/mini_active.png" id="2_oe1p5"]
+[ext_resource type="Texture2D" uid="uid://dfogonibpn8vg" path="res://images/Buttoning/smenubase.png" id="2_x54yq"]
+[ext_resource type="Texture2D" uid="uid://cg7n7yycd7b2v" path="res://images/Buttoning/Genbutton_select.png" id="3_dqx7s"]
+[ext_resource type="Texture2D" uid="uid://dsm40ukv54wbf" path="res://images/Buttoning/mini_select.png" id="3_exoij"]
+[ext_resource type="Texture2D" uid="uid://bk7501bctsbri" path="res://images/Buttoning/Genbutton_hover.png" id="4_3ls7r"]
+[ext_resource type="Texture2D" uid="uid://b5bignc011sg7" path="res://images/Buttoning/mini_hover.png" id="4_6otuq"]
+[ext_resource type="Texture2D" uid="uid://cjwnv441k8nks" path="res://images/Buttoning/Genbutton_down.png" id="5_x8c67"]
+[ext_resource type="Texture2D" uid="uid://blahoxt507sic" path="res://images/Buttoning/mini_down.png" id="5_xv4rj"]
+[ext_resource type="Texture2D" uid="uid://c7nbmiq13ncmo" path="res://images/Buttoning/Y_hover.png" id="6_6liha"]
+[ext_resource type="AudioStream" uid="uid://cedcmjmiii7px" path="res://Audio/MenuTap.ogg" id="12_1hax4"]
 
-[node name="Settings" type="Control" groups=["Menus"]]
+[node name="Settings" type="Control"]
+visible = false
 layout_mode = 3
-anchor_right = 0.458
-anchor_bottom = 0.517
-offset_right = -0.488037
-offset_bottom = 1.31198
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_pssow")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 704.0
-offset_bottom = 448.0
-color = Color(0.164706, 0.137255, 0.121569, 1)
+[node name="TextureRect" type="TextureRect" parent="." groups=["Menus"]]
+custom_minimum_size = Vector2(700, 450)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -225.0
+offset_right = 350.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x54yq")
+expand_mode = 1
 
-[node name="Quitb" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
 layout_mode = 0
-offset_top = 416.0
-offset_right = 97.0
-offset_bottom = 447.0
-text = "Quit Game"
+offset_left = 242.0
+offset_top = 22.0
+offset_right = 676.0
+offset_bottom = 234.0
 
-[node name="Load" type="Button" parent="."]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 40.0
-offset_right = 71.0
-offset_bottom = 71.0
-text = "Load"
+[node name="Comfgained" type="Label" parent="TextureRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Comfort gained (this ascension): "
 
-[node name="Save" type="Button" parent="."]
+[node name="Comfgainedat" type="Label" parent="TextureRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Comfort gained (all time): "
+
+[node name="Notgained" type="Label" parent="TextureRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Notoriety gained (this ascension): "
+
+[node name="Notgainedat" type="Label" parent="TextureRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Notoriety gained (all time): "
+
+[node name="Comfmult" type="Label" parent="TextureRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Comfort multiplier: "
+
+[node name="Notmult" type="Label" parent="TextureRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Notoriety multiplier: "
+
+[node name="Hoardsize" type="Label" parent="TextureRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Hoard size: "
+
+[node name="Cpower" type="Label" parent="TextureRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Comfort per click: "
+
+[node name="Clicks" type="Label" parent="TextureRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Dragon pats:"
+
+[node name="Kobolds" type="Label" parent="TextureRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Kobolds living with you: "
+
+[node name="Ascensions" type="Label" parent="TextureRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Ascension tier:"
+
+[node name="Playtime" type="Label" parent="TextureRect/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Time played:"
+
+[node name="Autosave" type="TextureButton" parent="TextureRect"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 0
-offset_left = 25.0
-offset_top = 81.0
-offset_right = 69.0
-offset_bottom = 112.0
+offset_left = 22.0
+offset_top = 17.656
+offset_right = 52.0
+offset_bottom = 47.656
+texture_normal = ExtResource("2_oe1p5")
+texture_pressed = ExtResource("3_exoij")
+texture_hover = ExtResource("4_6otuq")
+texture_disabled = ExtResource("5_xv4rj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AsActive" type="TextureRect" parent="TextureRect/Autosave"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_6liha")
+
+[node name="Label" type="Label" parent="TextureRect/Autosave"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -11.5
+offset_right = 92.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "Autosave"
+horizontal_alignment = 1
+
+[node name="Save" type="TextureButton" parent="TextureRect"]
+custom_minimum_size = Vector2(100, 37.5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = 112.0
+offset_right = -236.0
+offset_bottom = 149.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_1ur77")
+texture_pressed = ExtResource("3_dqx7s")
+texture_hover = ExtResource("4_3ls7r")
+texture_disabled = ExtResource("5_x8c67")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureRect/Save"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -11.5
+offset_right = 42.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
 text = "Save"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
 
-[connection signal="pressed" from="Quitb" to="." method="_on_quitb_pressed"]
-[connection signal="pressed" from="Load" to="." method="load_game"]
-[connection signal="pressed" from="Save" to="." method="save_game"]
+[node name="Load" type="TextureButton" parent="TextureRect"]
+custom_minimum_size = Vector2(100, 37.5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = 164.0
+offset_right = -236.0
+offset_bottom = 201.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_1ur77")
+texture_pressed = ExtResource("3_dqx7s")
+texture_hover = ExtResource("4_3ls7r")
+texture_disabled = ExtResource("5_x8c67")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureRect/Load"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -11.5
+offset_right = 42.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "Load"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Sound" type="TextureButton" parent="TextureRect"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = 22.0
+offset_top = 60.656
+offset_right = 52.0
+offset_bottom = 90.656
+texture_normal = ExtResource("2_oe1p5")
+texture_pressed = ExtResource("3_exoij")
+texture_hover = ExtResource("4_6otuq")
+texture_disabled = ExtResource("5_xv4rj")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SoActive" type="TextureRect" parent="TextureRect/Sound"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_6liha")
+
+[node name="Label" type="Label" parent="TextureRect/Sound"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 35.0
+offset_top = -11.5
+offset_right = 140.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "Sound Effects"
+
+[node name="Reset" type="TextureButton" parent="TextureRect"]
+custom_minimum_size = Vector2(75, 37.5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = 64.0
+offset_right = -236.0
+offset_bottom = 101.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_1ur77")
+texture_pressed = ExtResource("3_dqx7s")
+texture_hover = ExtResource("4_3ls7r")
+texture_disabled = ExtResource("5_x8c67")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureRect/Reset"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -12.5
+offset_right = 42.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Wipe Save"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Buttoncheck" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Tap" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("12_1hax4")
+volume_db = -10.0
+
+[connection signal="pressed" from="TextureRect/Autosave" to="." method="_on_autosave_pressed"]
+[connection signal="pressed" from="TextureRect/Save" to="." method="_save_pressed"]
+[connection signal="pressed" from="TextureRect/Load" to="." method="_load_pressed"]
+[connection signal="pressed" from="TextureRect/Sound" to="." method="_on_Sound_pressed"]
+[connection signal="pressed" from="TextureRect/Reset" to="." method="_on_reset_pressed"]
+[connection signal="timeout" from="Buttoncheck" to="." method="_buttoncheck"]
+[connection signal="timeout" from="Timer" to="." method="_update"]

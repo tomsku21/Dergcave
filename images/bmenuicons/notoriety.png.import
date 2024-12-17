@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4tvp4h4ssqhd"
-path="res://.godot/imported/ownedUps.png-fe71cda882040f775d33377fc7440700.ctex"
+uid="uid://didfexnlyj5dq"
+path="res://.godot/imported/notoriety.png-6b067658c4270d3f42b74e7a44da95a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Buttoning/ownedUps.png"
-dest_files=["res://.godot/imported/ownedUps.png-fe71cda882040f775d33377fc7440700.ctex"]
+source_file="res://images/bmenuicons/notoriety.png"
+dest_files=["res://.godot/imported/notoriety.png-6b067658c4270d3f42b74e7a44da95a2.ctex"]
 
 [params]
 

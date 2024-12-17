@@ -25,10 +25,9 @@ gravity = Vector3(0, 0, 0)
 scale_min = 1.5
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_uqtk6")
-color = Color(0.741176, 0.686275, 0.568627, 1)
+color = Color(0.976471, 0.909804, 0, 0.2)
 
 [node name="fieldeffect" type="GPUParticles2D"]
-modulate = Color(0.894118, 0.85098, 0, 0.568627)
 top_level = true
 emitting = false
 amount = 20

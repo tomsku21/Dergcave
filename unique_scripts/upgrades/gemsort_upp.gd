@@ -25,7 +25,7 @@ func connect_build():
 	var buildings = get_tree().get_nodes_in_group("Building")
 	gem_build = buildings[1]
 	kobold_build = buildings[2]
-	current_mult = (1 +(0.75 *  kobold_build.amount ** 0.75))
+	current_mult = (1 +(0.25 *  gem_build.amount ** 0.5))
 
 func save():
 	var save_dict = {
@@ -35,9 +35,9 @@ func save():
 	return save_dict
 
 func _on_timer_timeout():
-	new_mult = (1 +(0.75 *  gem_build.amount ** 0.75))
+	new_mult = (1 +(0.25 *  gem_build.amount ** 0.5))
 	if new_mult - current_mult != 0:
-		gem_build.modifier = (gem_build.modifier*new_mult)/current_mult
+		kobold_build.modifier = (kobold_build.modifier*new_mult)/current_mult
 		current_mult = new_mult
 
 func _on_mouse_entered():

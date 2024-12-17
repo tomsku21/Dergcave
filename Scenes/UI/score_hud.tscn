@@ -1,22 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://0u7f06arh5fg"]
+[gd_scene load_steps=6 format=3 uid="uid://0u7f06arh5fg"]
 
 [ext_resource type="Texture2D" uid="uid://d2s0koo0bknwn" path="res://images/Buttoning/bank.png" id="1_thy7j"]
 [ext_resource type="Script" path="res://unique_scripts/score_hud.gd" id="2_aoank"]
 [ext_resource type="Texture2D" uid="uid://c7f1p3aevlu5a" path="res://images/bmenuicons/pat.png" id="2_s1sbk"]
 [ext_resource type="Script" path="res://unique_scripts/NotHud.gd" id="3_uy7vo"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_nex08"]
-line_spacing = 0.0
-font_size = 64
-font_color = Color(0.784314, 0.784314, 0.784314, 1)
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_xnlof"]
-font_size = 60
-font_color = Color(0.784314, 0.784314, 0.784314, 1)
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://didfexnlyj5dq" path="res://images/bmenuicons/notoriety.png" id="4_27j5r"]
 
 [node name="ScoreHud" type="TextureRect"]
 offset_right = 392.0
@@ -27,23 +15,33 @@ script = ExtResource("2_aoank")
 
 [node name="NotHud" type="TextureRect" parent="."]
 show_behind_parent = true
-layout_mode = 0
-offset_left = 196.0
-offset_right = 588.0
-offset_bottom = 184.0
-scale = Vector2(0.5, 0.5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -92.0
+offset_right = 294.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_thy7j")
 script = ExtResource("3_uy7vo")
 
 [node name="notScore" type="Label" parent="NotHud"]
 layout_mode = 0
-offset_left = 36.0
-offset_top = 12.0
-offset_right = 298.0
-offset_bottom = 100.0
+offset_left = 37.3333
+offset_top = 21.3333
+offset_right = 299.333
+offset_bottom = 111.333
 size_flags_horizontal = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 60
 text = "1"
-label_settings = SubResource("LabelSettings_nex08")
 
 [node name="notSpeed" type="Label" parent="NotHud"]
 layout_mode = 0
@@ -51,12 +49,19 @@ offset_left = 36.0
 offset_top = 100.0
 offset_right = 266.0
 offset_bottom = 183.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 60
 text = "1/s"
-label_settings = SubResource("LabelSettings_xnlof")
 
 [node name="Timer" type="Timer" parent="NotHud"]
 wait_time = 0.5
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="NotHud"]
+position = Vector2(338, 58)
+scale = Vector2(0.733333, 0.733333)
+texture = ExtResource("4_27j5r")
 
 [node name="petSpeed" type="Label" parent="."]
 layout_mode = 0
@@ -64,18 +69,22 @@ offset_left = 32.0
 offset_top = 100.0
 offset_right = 362.0
 offset_bottom = 183.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 60
 text = "1/s"
-label_settings = SubResource("LabelSettings_xnlof")
 
 [node name="Score" type="Label" parent="."]
 layout_mode = 0
-offset_left = 34.0
-offset_top = 10.0
-offset_right = 296.0
-offset_bottom = 98.0
+offset_left = 32.0
+offset_top = 22.0
+offset_right = 298.0
+offset_bottom = 112.0
 size_flags_horizontal = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 60
 text = "1"
-label_settings = SubResource("LabelSettings_nex08")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(338, 58)

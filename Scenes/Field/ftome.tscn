@@ -1,19 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7xpragx0ytqu"]
+[gd_scene load_steps=4 format=3 uid="uid://c7xpragx0ytqu"]
 
 [ext_resource type="Texture2D" uid="uid://dpikpowijsrjq" path="res://images/field/fieldtomeb.png" id="1_skb5q"]
 [ext_resource type="Script" path="res://Scenes/Field/FieldInteract.gd" id="2_2scqa"]
-[ext_resource type="PackedScene" uid="uid://f7wykdcvcctr" path="res://Scenes/Field/fieldeffect.tscn" id="3_i00j8"]
 [ext_resource type="Texture2D" uid="uid://dwdmhw3x77kfd" path="res://images/field/fieldtomef.png" id="4_88s2m"]
 
 [node name="Ftome" type="Sprite2D" groups=["Persist"]]
 visible = false
 y_sort_enabled = true
-position = Vector2(2849.01, 830.053)
+position = Vector2(1446.24, 423.56)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_skb5q")
 offset = Vector2(2, 63)
 script = ExtResource("2_2scqa")
 target_build = 5
-particle = ExtResource("3_i00j8")
 
 [node name="tomef" type="Sprite2D" parent="."]
 y_sort_enabled = true

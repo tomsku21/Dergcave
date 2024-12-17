@@ -1,75 +1,48 @@
 extends Control
 
-func _on_quitb_pressed():
-	#add later stuff to save information/progress here
-	get_tree().quit()
+func _buttoncheck():
+	%AsActive.visible = Global.autosave == true
+	%SoActive.visible = Global.soundeff == true
+	%Buttoncheck.queue_free()
 
-func save_game():
-	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	var save_nodes = get_tree().get_nodes_in_group("Persist")
-	for node in save_nodes:
-		# Check the node is an instanced scene so it can be instanced again during load.
-		if node.scene_file_path.is_empty():
-			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
-			continue
+func _update():
+	%Comfgained.text = str("Comfort gained (this ascension): ", Global.bigprint(Global.Acomfort))
+	%Comfgainedat.text = str("Comfort gained (all time): ", Global.bigprint(Global.Gcomfort))
+	%Notgained.text = str("Notoriety gained (this ascension): ", Global.bigprint(Global.Anotoriety))
+	%Notgainedat.text = str("Notoriety gained (all time): ", Global.bigprint(Global.Gnotoriety))
+	%Comfmult.text = str("Comfort multiplier: ",Global.bigprint((Global.mult) * 100), "%")
+	%Notmult.text = str("Notoriety multiplier: ",Global.bigprint((Global.nmult) * 100), "%")
+	%Hoardsize.text = str("Hoard size: ", Global.bigprint(Global.buildings))
+	%Cpower.text = str("Comfort per click: ", Global.bigprint(Global.power))
+	%Clicks.text = str("Dragon pats: ", Global.bigprint(Global.clicks))
+	%Kobolds.text = str("Kobolds living with you: ", Global.bigprint(Global.kobamount))
+	%Ascensions.text = str("Ascension tier: ", Global.reincarnation)
 
-		# Check the node has a save function.
-		if !node.has_method("save"):
-			print("persistent node '%s' is missing a save() function, skipped" % node.name)
-			continue
+func _on_autosave_pressed():
+	if Global.soundeff == true:
+		%Tap.play()
+	Global.autosave = !Global.autosave
+	%AsActive.visible = Global.autosave == true
 
-		# Call the node's save function.
-		var node_data = node.call("save")
+func _save_pressed():
+	if Global.soundeff == true:
+		%Tap.play()
+	SaveLoad.save_game()
 
-		# JSON provides a static method to serialized JSON string.
-		var json_string = JSON.stringify(node_data)
+func _load_pressed():
+	if Global.soundeff == true:
+		%Tap.play()
+	SaveLoad.load_game()
+	self.visible = false
 
-		# Store the save dictionary as a new line in the save file.
-		save_file.store_line(json_string)
-	#and finally global variables after saving every persistent node, 
-	#because these aren't stored in a node
-	var global_data = Global.save()
-	var json_stringG = JSON.stringify(global_data)
-	save_file.store_line(json_stringG)
+func _on_Sound_pressed():
+	if Global.soundeff == true:
+		%Tap.play()
+	Global.soundeff = !Global.soundeff
+	%SoActive.visible = !%SoActive.visible
 
-func load_game():
-	if not FileAccess.file_exists("user://savegame.save"):
-		return # Error! We don't have a save to load.
-
-	# First deleting saveable objects to prevent cloning
-	var save_nodes = get_tree().get_nodes_in_group("Persist")
-	for i in save_nodes:
-		i.queue_free()
-	Global.empty()
-	# Load the file line by line and process that dictionary to restore
-	# the object it represents.
-	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
-	while save_file.get_position() < save_file.get_length():
-		var json_string = save_file.get_line()
-
-		# Creates the helper class to interact with JSON
-		var json = JSON.new()
-
-		# Check if there is any error while parsing the JSON string, skip in case of failure
-		var parse_result = json.parse(json_string)
-		if not parse_result == OK:
-			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
-			continue
-
-		# Get the data from the JSON object
-		var node_data = json.get_data()
-		#global variables don't need their node instanced, instead we'll just input their 
-		#values right away, by catching their filename
-		if !node_data.has("filename"):
-			for i in node_data.keys():
-				Global.set(i, node_data[i])
-		else:
-			# Firstly, we need to create the object and add it to the tree and set its position.
-			var new_object = load(node_data["filename"]).instantiate()
-			get_node(node_data["parent"]).add_child(new_object)
-
-			# Now we set the remaining variables.
-			for i in node_data.keys():
-				if i == "filename" or i == "parent":
-					continue
-				new_object.set(i, node_data[i])
+func _on_reset_pressed():
+	if Global.soundeff == true:
+		%Tap.play()
+	Wipeconfirm._Show_Wipe_window()
+	

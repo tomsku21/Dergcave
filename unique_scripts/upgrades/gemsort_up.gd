@@ -10,6 +10,7 @@ extends TextureButton
 @export var build_req = 0
 @export var target_node: PackedScene
 @export var debuff_node: PackedScene
+var soundnode = preload("res://Scenes/upsound.tscn")
 var gem_build
 var kobold_build
 
@@ -43,20 +44,21 @@ func timeout():
 		var debuff = debuff_node.instantiate()
 		get_tree().get_nodes_in_group("Debuff")[0].add_child(debuff)
 		Global.gemdebuf = true
-		gem_build.update(0,0.5)
-		kobold_build.update(0,0.5)
+		gem_build._update(0,0.5)
+		kobold_build._update(0,0.5)
 		$Timer.queue_free()
 
 
 func _on_pressed():
-	gem_build.modifier *= (1 +(0.75 *  kobold_build.amount ** 0.75))
-	#remove debuff icon
+	kobold_build.modifier *= (1 +(0.25 * gem_build.amount ** 0.5))
 	Global.gemdebuf = false
-	gem_build.update(0,2)
-	gem_build.update(0,2)
+	gem_build._update(0,2)
+	gem_build._update(0,2)
 	Global.comfort -= cost
 	var purchasedver = target_node.instantiate()
 	get_tree().get_nodes_in_group("purchased")[0].add_child(purchasedver)
+	var soundeffect = soundnode.instantiate()
+	get_parent().add_child(soundeffect)
 	queue_free()
 
 func _on_mouse_entered():

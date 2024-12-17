@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjoto4bhe8gqo"]
+[gd_scene load_steps=9 format=3 uid="uid://bjoto4bhe8gqo"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_m1oqa"]
 [ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_4w77m"]
@@ -6,15 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_wu1w7"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/mushdictionary_up.gd" id="5_u22iq"]
 [ext_resource type="PackedScene" uid="uid://e0gwwbvn5db4" path="res://Scenes/upgrades/purchased/mushdictionary_upp.tscn" id="6_vg61m"]
-[ext_resource type="Texture2D" uid="uid://bx45cdy8nnpdj" path="res://images/UpgradeIcon/upgrades/shroom.png" id="7_60l4a"]
+[ext_resource type="Texture2D" uid="uid://ds1suvk6p4pdq" path="res://images/UpgradeIcon/upgrades/mushbok.png" id="7_pjo4o"]
 
 [sub_resource type="Theme" id="Theme_ttucu"]
 default_font_size = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_fkb7g"]
-font_size = 42
-font_color = Color(0, 0, 0, 1)
-outline_size = 6
 
 [node name="dictionary_up" type="TextureButton" groups=["Persist"]]
 visible = false
@@ -42,19 +37,10 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_60l4a")
+texture = ExtResource("7_pjo4o")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "3"
-label_settings = SubResource("LabelSettings_fkb7g")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

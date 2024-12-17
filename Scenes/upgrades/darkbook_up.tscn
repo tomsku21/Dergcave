@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ho1q1hdjityb"]
+[gd_scene load_steps=9 format=3 uid="uid://ho1q1hdjityb"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_jki5t"]
 [ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_cuwhf"]
@@ -6,15 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_78b4b"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/darkbook_up.gd" id="5_2if4j"]
 [ext_resource type="PackedScene" uid="uid://by0vludphfqpg" path="res://Scenes/upgrades/purchased/darkbook_upp.tscn" id="6_v3qff"]
-[ext_resource type="Texture2D" uid="uid://bjy2rae6313bh" path="res://images/UpgradeIcon/upgrades/book.png" id="7_gm6c6"]
+[ext_resource type="Texture2D" uid="uid://dgm1ahaecrsui" path="res://images/UpgradeIcon/upgrades/darkbook.png" id="7_8p8ux"]
 
 [sub_resource type="Theme" id="Theme_tesf0"]
 default_font_size = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_5r0s2"]
-font_size = 42
-font_color = Color(0, 0, 0, 1)
-outline_size = 6
 
 [node name="darkbook_up" type="TextureButton" groups=["Persist"]]
 visible = false
@@ -41,16 +36,7 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_gm6c6")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "3"
-label_settings = SubResource("LabelSettings_5r0s2")
+texture = ExtResource("7_8p8ux")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

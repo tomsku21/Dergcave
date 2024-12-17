@@ -12,6 +12,7 @@
 default_font_size = 16
 
 [node name="coin_up" type="TextureButton" groups=["Persist"]]
+visible = false
 show_behind_parent = true
 custom_minimum_size = Vector2(75, 75)
 offset_right = 75.0

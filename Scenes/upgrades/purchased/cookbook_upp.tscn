@@ -1,16 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://t62x02vbi1m8"]
+[gd_scene load_steps=5 format=3 uid="uid://t62x02vbi1m8"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_aec76"]
+[ext_resource type="Texture2D" uid="uid://ukhwedv8cqk1" path="res://images/UpgradeIcon/upgrades/cookbook.png" id="3_7cwoy"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/cookbook_upp.gd" id="5_i3vg2"]
-[ext_resource type="Texture2D" uid="uid://bjy2rae6313bh" path="res://images/UpgradeIcon/upgrades/book.png" id="5_o3foh"]
 
 [sub_resource type="Theme" id="Theme_tesf0"]
 default_font_size = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_5r0s2"]
-font_size = 42
-font_color = Color(0, 0, 0, 1)
-outline_size = 6
 
 [node name="cookbook_upp" type="TextureRect" groups=["Persist"]]
 custom_minimum_size = Vector2(75, 75)
@@ -30,16 +25,7 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_o3foh")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "2"
-label_settings = SubResource("LabelSettings_5r0s2")
+texture = ExtResource("3_7cwoy")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

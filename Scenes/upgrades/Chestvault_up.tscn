@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://14pc4uwdscms"]
+[gd_scene load_steps=9 format=3 uid="uid://14pc4uwdscms"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_et3bq"]
 [ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_i0i3l"]
@@ -6,15 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_wcqf4"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/Chestvault_up.gd" id="5_q3wvq"]
 [ext_resource type="PackedScene" uid="uid://khd0gdq6ns4u" path="res://Scenes/upgrades/purchased/chestvault_upp.tscn" id="6_u4b3w"]
-[ext_resource type="Texture2D" uid="uid://blla6vlbiyjq4" path="res://images/UpgradeIcon/upgrades/chest.png" id="7_xjv63"]
+[ext_resource type="Texture2D" uid="uid://ct2ivxtptvrw6" path="res://images/UpgradeIcon/upgrades/vault.png" id="7_7mmpq"]
 
 [sub_resource type="Theme" id="Theme_tesf0"]
 default_font_size = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_sitx0"]
-font_size = 42
-font_color = Color(0, 0, 0, 1)
-outline_size = 6
 
 [node name="vault_up" type="TextureButton" groups=["Persist"]]
 visible = false
@@ -41,19 +36,10 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_xjv63")
+texture = ExtResource("7_7mmpq")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "3"
-label_settings = SubResource("LabelSettings_sitx0")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

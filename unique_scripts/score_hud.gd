@@ -15,9 +15,9 @@ func _process(_delta):
 		$Score.text = Global.bigprint(Global.comfort)
 	#comfort per second
 	if str(snapped(Global.cpsec * Global.mult,1)).length() < 6:
-		$petSpeed.text = str(snapped(Global.cpsec * Global.mult,0.1), "/s")
+		$petSpeed.text = str(snapped(Global.cpsec,0.1), "/s")
 	else:
-		$petSpeed.text = str(Global.bigprint(Global.cpsec * Global.mult), "/s")
+		$petSpeed.text = str(Global.bigprint(Global.cpsec), "/s")
 	#notoriety
 	if str(snapped(Global.notoriety, 1)).length() < 6:
 		$NotHud/notScore.text = str(snapped(Global.notoriety,0.1))
@@ -25,8 +25,8 @@ func _process(_delta):
 		$NotHud/notScore.text = Global.bigprint(Global.notoriety)
 	#notoriety per second
 	if str(snapped(Global.nsec * Global.mult,1)).length() < 6:
-		$NotHud/notSpeed.text = str(snapped(Global.nsec * Global.mult,0.1), "/s")
+		$NotHud/notSpeed.text = str(snapped(Global.nsec,0.1), "/s")
 	else:
-		$NotHud/notSpeed.text = str(Global.bigprint(Global.nsec * Global.nmult), "/s")
+		$NotHud/notSpeed.text = str(Global.bigprint(Global.nsec), "/s")
 	
 

@@ -10,24 +10,36 @@ config_version=5
 
 [application]
 
-config/name="Dergcave"
-config/version="0.8"
+config/name="DergonHoard"
+config/version="1.0"
 run/main_scene="res://node_2d.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-boot_splash/bg_color=Color(0.243137, 0.0862745, 0.0352941, 1)
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.0745098, 0.0745098, 0.0156863, 1)
+config/icon="res://DCicon.png"
+config/windows_native_icon="res://DCicon.ico"
 
 [autoload]
 
 Global="*res://unique_scripts/global.gd"
 Popups="*res://Scenes/UI/popups.tscn"
+Rconfirm="*res://Scenes/menu/RConfirm.tscn"
+SaveLoad="*res://unique_scripts/Save_Load.gd"
+Wipeconfirm="*res://Scenes/menu/WipeConfirm.tscn"
 
 [display]
 
 window/size/viewport_width=1536
 window/size/viewport_height=864
 window/stretch/mode="canvas_items"
-window/stretch/aspect="ignore"
+
+[filesystem]
+
+import/blender/enabled=false
+
+[gui]
+
+theme/custom="res://Fonts/font_settings.tres"
+theme/custom_font="res://Fonts/Laverick-Regular.otf"
 
 [input]
 

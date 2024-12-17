@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl8s5oti0ts3r"]
+
+[ext_resource type="Script" path="res://unique_scripts/patnumb.gd" id="1_oi4wo"]
+
+[node name="Patnumb" type="Label"]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -768.0
+offset_top = -432.0
+offset_right = -743.0
+offset_bottom = -368.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 1
+script = ExtResource("1_oi4wo")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bafyb0juwxuuu"]
+[gd_scene load_steps=10 format=3 uid="uid://bafyb0juwxuuu"]
 
 [ext_resource type="Texture2D" uid="uid://qmqqxgdwwjvw" path="res://images/Buttoning/build_base.png" id="1_qsodo"]
 [ext_resource type="Texture2D" uid="uid://7ct1gd0f0cd1" path="res://images/Buttoning/build_base_selected.png" id="2_vckaq"]
@@ -7,85 +7,92 @@
 [ext_resource type="Script" path="res://unique_scripts/coinbuild.gd" id="5_1ejhl"]
 [ext_resource type="Texture2D" uid="uid://c5i00yj4e0nim" path="res://images/UpgradeIcon/buildings/coinbuild.png" id="6_mrk3d"]
 [ext_resource type="Texture2D" uid="uid://c7f1p3aevlu5a" path="res://images/bmenuicons/pat.png" id="7_dct86"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_yxlh8"]
-font_size = 54
-
-[sub_resource type="LabelSettings" id="LabelSettings_x8gfd"]
-font_size = 42
-
-[sub_resource type="LabelSettings" id="LabelSettings_jlmkd"]
-font_size = 42
-
-[sub_resource type="LabelSettings" id="LabelSettings_kfath"]
-line_spacing = 0.0
-font_size = 64
+[ext_resource type="Theme" uid="uid://n8x08cml64sf" path="res://Fonts/font_settings.tres" id="7_rhha0"]
+[ext_resource type="AudioStream" uid="uid://cedcmjmiii7px" path="res://Audio/MenuTap.ogg" id="9_gr6yw"]
 
 [node name="coin_build" type="TextureButton" groups=["Building", "Persist"]]
-visible = false
+custom_minimum_size = Vector2(704, 100)
+offset_right = 704.0
+offset_bottom = 100.0
 texture_normal = ExtResource("1_qsodo")
 texture_pressed = ExtResource("2_vckaq")
 texture_hover = ExtResource("3_4m274")
 texture_disabled = ExtResource("4_rlk42")
+ignore_texture_size = true
+stretch_mode = 0
 script = ExtResource("5_1ejhl")
 title = "Gold Coin"
-description = "Most important part of hoards."
+description = "Most important part of a hoard."
 bcost = 10
 bpower = 0.1
 modifier = 1.0
 tier = 1
 
 [node name="I" type="Sprite2D" parent="."]
-position = Vector2(160, 96)
-scale = Vector2(0.675, 0.675)
+position = Vector2(68, 50)
+scale = Vector2(0.325, 0.325)
 texture = ExtResource("6_mrk3d")
-
-[node name="C" type="Label" parent="."]
-layout_mode = 0
-offset_left = 400.0
-offset_top = 112.0
-offset_right = 668.0
-offset_bottom = 186.0
-theme_override_font_sizes/font_size = 18
-label_settings = SubResource("LabelSettings_yxlh8")
-
-[node name="cost" type="Sprite2D" parent="C"]
-position = Vector2(-32, 16)
-texture = ExtResource("7_dct86")
+metadata/_edit_lock_ = true
 
 [node name="A" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1280.0
-offset_top = 118.0
-offset_right = 1552.0
-offset_bottom = 176.0
-theme_override_font_sizes/font_size = 18
-label_settings = SubResource("LabelSettings_x8gfd")
+offset_left = 554.0
+offset_top = 56.0
+offset_right = 826.0
+offset_bottom = 114.0
+scale = Vector2(0.5, 0.5)
+text = "1"
 horizontal_alignment = 2
 
 [node name="P" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1280.0
-offset_top = 32.0
-offset_right = 1552.0
-offset_bottom = 90.0
-text = "+0.1 A/s"
-label_settings = SubResource("LabelSettings_jlmkd")
+offset_left = 554.0
+offset_top = 15.0
+offset_right = 826.0
+offset_bottom = 73.0
+scale = Vector2(0.5, 0.5)
+text = "+0.1 C/s"
 horizontal_alignment = 2
 
 [node name="Desc" type="Label" parent="."]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 20.0
-offset_right = 1280.0
-offset_bottom = 108.0
-theme_override_font_sizes/font_size = 14
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -217.0
+offset_top = 10.0
+offset_right = 717.0
+offset_bottom = 100.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
 text = "Gold Coin"
-label_settings = SubResource("LabelSettings_kfath")
 horizontal_alignment = 1
 
 [node name="Aupdate" type="Timer" parent="."]
 autostart = true
+
+[node name="C" type="Label" parent="."]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 52.0
+offset_right = 528.0
+offset_bottom = 134.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_rhha0")
+theme_override_font_sizes/font_size = 54
+text = "10.23e10 test"
+
+[node name="cost" type="Sprite2D" parent="C"]
+position = Vector2(-35, 40)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_dct86")
+
+[node name="Tap" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_gr6yw")
+pitch_scale = 1.5
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

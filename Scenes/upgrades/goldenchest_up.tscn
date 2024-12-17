@@ -1,20 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqn2dcbsyqjq7"]
+[gd_scene load_steps=9 format=3 uid="uid://bqn2dcbsyqjq7"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_6q1sb"]
 [ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_0r83j"]
 [ext_resource type="Texture2D" uid="uid://dkt83jm8fu65" path="res://images/Buttoning/upgrade base_hover.png" id="3_l3otk"]
 [ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_jye04"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/goldenchest_up.gd" id="5_gyko2"]
-[ext_resource type="Texture2D" uid="uid://blla6vlbiyjq4" path="res://images/UpgradeIcon/upgrades/chest.png" id="6_ks4qo"]
 [ext_resource type="PackedScene" uid="uid://cluw667b3xu5t" path="res://Scenes/upgrades/purchased/goldenchest_upp.tscn" id="6_r6psj"]
+[ext_resource type="Texture2D" uid="uid://cv2uassyy08ip" path="res://images/UpgradeIcon/upgrades/goldchest.png" id="7_qb5ej"]
 
 [sub_resource type="Theme" id="Theme_tesf0"]
 default_font_size = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_sitx0"]
-font_size = 42
-font_color = Color(0, 0, 0, 1)
-outline_size = 6
 
 [node name="goldenchest_up" type="TextureButton" groups=["Persist"]]
 visible = false
@@ -41,19 +36,10 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_ks4qo")
+texture = ExtResource("7_qb5ej")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "2"
-label_settings = SubResource("LabelSettings_sitx0")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

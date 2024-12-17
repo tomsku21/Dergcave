@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://blde1q04y11lo"]
+[gd_scene load_steps=10 format=3 uid="uid://blde1q04y11lo"]
 
 [ext_resource type="Texture2D" uid="uid://qmqqxgdwwjvw" path="res://images/Buttoning/build_base.png" id="1_a88fq"]
 [ext_resource type="Texture2D" uid="uid://7ct1gd0f0cd1" path="res://images/Buttoning/build_base_selected.png" id="2_3im3s"]
@@ -8,26 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://dq3r7foook0rh" path="res://images/UpgradeIcon/buildings/kobol2.png" id="6_7b1f4"]
 [ext_resource type="PackedScene" uid="uid://6hdxhal6id8r" path="res://Scenes/debuffs/kobhunger_debuff.tscn" id="6_8wnrg"]
 [ext_resource type="Texture2D" uid="uid://c7f1p3aevlu5a" path="res://images/bmenuicons/pat.png" id="7_tmaxn"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_x4tqo"]
-font_size = 42
-
-[sub_resource type="LabelSettings" id="LabelSettings_trv6m"]
-line_spacing = 0.0
-font_size = 64
-
-[sub_resource type="LabelSettings" id="LabelSettings_td5mm"]
-font_size = 42
-
-[sub_resource type="LabelSettings" id="LabelSettings_mfrkc"]
-font_size = 54
+[ext_resource type="AudioStream" uid="uid://cedcmjmiii7px" path="res://Audio/MenuTap.ogg" id="9_3yxpj"]
 
 [node name="Kobold_build" type="TextureButton" groups=["Building", "Persist"]]
 visible = false
+custom_minimum_size = Vector2(704, 100)
 texture_normal = ExtResource("1_a88fq")
 texture_pressed = ExtResource("2_3im3s")
 texture_hover = ExtResource("3_ipj5s")
 texture_disabled = ExtResource("4_dqlr6")
+ignore_texture_size = true
+stretch_mode = 0
 script = ExtResource("5_th51c")
 title = "Kobolds"
 description = "Yip yip yip yap..."
@@ -38,40 +29,11 @@ tier = 1
 target_node = ExtResource("6_8wnrg")
 
 [node name="I" type="Sprite2D" parent="."]
-position = Vector2(148, 100)
-scale = Vector2(0.66875, 0.66875)
+position = Vector2(68, 51)
+scale = Vector2(0.325, 0.325)
 texture = ExtResource("6_7b1f4")
 flip_h = true
-
-[node name="A" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1280.0
-offset_top = 118.0
-offset_right = 1551.0
-offset_bottom = 176.0
-theme_override_font_sizes/font_size = 18
-label_settings = SubResource("LabelSettings_x4tqo")
-horizontal_alignment = 2
-
-[node name="Desc" type="Label" parent="."]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 16.0
-offset_right = 1280.0
-offset_bottom = 172.0
-text = "Kobold"
-label_settings = SubResource("LabelSettings_trv6m")
-horizontal_alignment = 1
-
-[node name="P" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1280.0
-offset_top = 32.0
-offset_right = 1552.0
-offset_bottom = 90.0
-text = "+0.1 A/s"
-label_settings = SubResource("LabelSettings_td5mm")
-horizontal_alignment = 2
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -83,22 +45,65 @@ autostart = true
 wait_time = 30.0
 autostart = true
 
-[node name="C" type="Label" parent="."]
-layout_mode = 0
-offset_left = 400.0
-offset_top = 112.0
-offset_right = 668.0
-offset_bottom = 186.0
-theme_override_font_sizes/font_size = 18
-label_settings = SubResource("LabelSettings_mfrkc")
-
-[node name="cost" type="Sprite2D" parent="C"]
-position = Vector2(-32, 16)
-texture = ExtResource("7_tmaxn")
-
 [node name="Hungert" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="A" type="Label" parent="."]
+layout_mode = 0
+offset_left = 554.0
+offset_top = 56.0
+offset_right = 826.0
+offset_bottom = 114.0
+scale = Vector2(0.5, 0.5)
+text = "1"
+horizontal_alignment = 2
+
+[node name="P" type="Label" parent="."]
+layout_mode = 0
+offset_left = 554.0
+offset_top = 15.0
+offset_right = 826.0
+offset_bottom = 73.0
+scale = Vector2(0.5, 0.5)
+text = "+0.1 C/s"
+horizontal_alignment = 2
+
+[node name="Desc" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -215.0
+offset_top = 10.0
+offset_right = 719.0
+offset_bottom = 100.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "Kobold"
+horizontal_alignment = 1
+
+[node name="C" type="Label" parent="."]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 52.0
+offset_right = 438.0
+offset_bottom = 134.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 54
+text = "1.2"
+
+[node name="cost" type="Sprite2D" parent="C"]
+position = Vector2(-35, 40)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_tmaxn")
+
+[node name="Tap" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_3yxpj")
+pitch_scale = 1.5
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

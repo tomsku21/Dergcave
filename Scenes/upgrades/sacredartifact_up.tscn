@@ -1,20 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://didapnfrc0db5"]
+[gd_scene load_steps=9 format=3 uid="uid://didapnfrc0db5"]
 
 [ext_resource type="Texture2D" uid="uid://c1vfb8rcegnet" path="res://images/Buttoning/upgrade base.png" id="1_t0vxw"]
 [ext_resource type="Texture2D" uid="uid://c2omuuv3uvqj0" path="res://images/Buttoning/upgrade base_pressed.png" id="2_aob4v"]
 [ext_resource type="Texture2D" uid="uid://dkt83jm8fu65" path="res://images/Buttoning/upgrade base_hover.png" id="3_6yamt"]
 [ext_resource type="Texture2D" uid="uid://c5fo8sb7555qv" path="res://images/Buttoning/upgrade base_disabled.png" id="4_jmlfn"]
 [ext_resource type="Script" path="res://unique_scripts/upgrades/sacredartifact_up.gd" id="5_175it"]
-[ext_resource type="Texture2D" uid="uid://2se8xcfiuhbw" path="res://images/UpgradeIcon/upgrades/art.png" id="6_01frr"]
 [ext_resource type="PackedScene" uid="uid://bky71iebkkng5" path="res://Scenes/upgrades/purchased/sacredartifact_upp.tscn" id="6_u1l0m"]
+[ext_resource type="Texture2D" uid="uid://dlab7q01eyfmn" path="res://images/UpgradeIcon/upgrades/sacred.png" id="7_lshas"]
 
 [sub_resource type="Theme" id="Theme_tesf0"]
 default_font_size = 16
-
-[sub_resource type="LabelSettings" id="LabelSettings_ph1hs"]
-font_size = 42
-font_color = Color(0, 0, 0, 1)
-outline_size = 6
 
 [node name="sacredartifact_up" type="TextureButton" groups=["Persist"]]
 visible = false
@@ -41,19 +36,12 @@ layout_mode = 0
 offset_right = 150.0
 offset_bottom = 150.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_01frr")
+texture = ExtResource("7_lshas")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 8.0
-offset_right = 48.0
-offset_bottom = 66.0
-text = "3"
-label_settings = SubResource("LabelSettings_ph1hs")
-
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="timeout" from="Timer" to="." method="timeout"]

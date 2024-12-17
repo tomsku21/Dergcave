@@ -1,5 +1,6 @@
 extends RigidBody2D
 @export var pattet_part: PackedScene
+@export var pattet_number: PackedScene
 
 var velocity = Vector2.ZERO
 @export var boredom = 0
@@ -8,10 +9,15 @@ var derg_destination
 var patcd = false
 var ground
 var menus
+var spritenum
+var sprite: AnimatedSprite2D:
+	set(value):
+		sprite = value
+		sprite.visible = true
 
 func _ready():
 	randomize()
-	position = Vector2(randf_range(-1000,1000),randf_range(-300,300))
+	initialize_sprite()
 	_connect_nodes()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,8 +26,8 @@ func _process(_delta):
 		if (velocity.x != 0):
 			$shadow.visible = false
 			$shadow2.visible = true
-			$AnimatedSprite2D.animation = "Walk"
-			$AnimatedSprite2D.flip_h = velocity.x > 0
+			sprite.animation = "Walk"
+			sprite.flip_h = velocity.x > 0
 			if velocity.x > 0:
 				$shadow2.offset.x = 27
 			else:
@@ -29,11 +35,18 @@ func _process(_delta):
 		else:
 			$shadow2.visible = false
 			$shadow.visible = true
-			$AnimatedSprite2D.animation = "Sit"
-			$AnimatedSprite2D.flip_h = false
+			sprite.animation = "Sit"
+			sprite.flip_h = false
 		
 	if (boredom > 10):
 		_moving()
+
+func initialize_sprite():
+	if spritenum == null:
+		spritenum = randi_range(0, 2)
+	sprite = %Colorvar.get_child(spritenum)
+	position = Vector2(randf_range(-500,500),randf_range(-150,150))
+	sprite.play("Sit")
 
 func _connect_nodes():
 	ground = get_tree().get_nodes_in_group("Ground")[0]
@@ -42,27 +55,32 @@ func _connect_nodes():
 func save():
 	var save_dict = {
 		"filename" : get_scene_file_path(),
-		"parent" : get_parent().get_path()
+		"parent" : get_parent().get_path(),
+		"spritenum" : spritenum
 	}
 	return save_dict
 
 func _on_pat():
 	add_child(pattet_part.instantiate())
+	add_child(pattet_number.instantiate())
+	if Global.soundeff == true:
+		var Tap = %Audio.get_child(randi_range(0, 2))
+		Tap.play()
 	velocity = Vector2.ZERO
-	Global.comfort += Global.power
+	Global.comfort += Global.power * Global.mult
 	boredom = 0
 	Global.clicks +=1
 	#Animations for starting petting
 	patcd = true
 	$shadow2.visible = false
 	$shadow.visible = true
-	$AnimatedSprite2D.animation = "Petstart"
+	sprite.animation = "Petstart"
 	$Patcooldown.start()
 
 func _moving(): 
 	#first select a random valid point within a semi-random range
 	if (destreach == true):
-		derg_destination = Vector2(global_position.x + randf_range(-600,600),global_position.y + randf_range(-600,600))
+		derg_destination = Vector2(global_position.x + randf_range(-600,600),global_position.y + randf_range(-300,300))
 		if ((ground.get_rect()).has_point(derg_destination) 
 		and _check_viability(menus, derg_destination)):  #try again, if point was not valid. Risks near-infinite loop, but very unlikely
 			destreach = false
@@ -88,10 +106,10 @@ func _on_boredom_time():
 
 #A small timer for slight delay to petting animation
 func _on_patcooldown_timeout():
-	$AnimatedSprite2D.play("Petend")
+	sprite.play("Petend")
 
 #back to default animation after petting fully finished
 func _on_pat_finished():
-	if $AnimatedSprite2D.animation == "Petend":
-		$AnimatedSprite2D.play("Sit")
+	if sprite.animation == "Petend":
+		sprite.play("Sit")
 		patcd = false
